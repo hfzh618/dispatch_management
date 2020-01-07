@@ -77,7 +77,7 @@ public class ConstantsContext {
         String systemName = (String) CONSTNTS_HOLDER.get("GUNS_SYSTEM_NAME");
         if (ToolUtil.isEmpty(systemName)) {
             log.error("系统常量存在空值！常量名称：GUNS_SYSTEM_NAME，采用默认名称：Guns快速开发平台" + TIPS_END);
-            return "Guns快速开发平台";
+            return "物流调度系统";
         } else {
             return systemName;
         }

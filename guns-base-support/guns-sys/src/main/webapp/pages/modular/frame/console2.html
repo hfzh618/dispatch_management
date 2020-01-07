@@ -53,27 +53,27 @@
 
         <div class="layui-col-xs12 layui-col-md8">
             <div class="layui-card" style="">
-                <div class="layui-card-header">活动实时交易情况</div>
+                <div class="layui-card-header">实时调度情况</div>
                 <div class="layui-card-body">
                     <div class="layui-row">
                         <div class="layui-col-xs12 layui-col-sm6 layui-col-lg3 text-center">
-                            <div class="numberInfoSubTitle">今日交易总额</div>
+                            <div class="numberInfoSubTitle">今日调度次数</div>
                             <div class="numberInfoValue">
-                                124,543,233<em class="numberInfoSuffix">元</em>
+                                4,543<em class="numberInfoSuffix">次</em>
                             </div>
                         </div>
                         <div class="layui-col-xs12 layui-col-sm6 layui-col-lg3 text-center">
-                            <div class="numberInfoSubTitle">销售目标完成率</div>
+                            <div class="numberInfoSubTitle">送货任务完成率</div>
                             <div class="numberInfoValue">92%</div>
                         </div>
                         <div class="layui-col-xs12 layui-col-sm6 layui-col-lg3 text-center">
-                            <div class="numberInfoSubTitle">活动剩余时间</div>
+                            <div class="numberInfoSubTitle">总计送货时间</div>
                             <div class="numberInfoValue">00:57:10</div>
                         </div>
                         <div class="layui-col-xs12 layui-col-sm6 layui-col-lg3 text-center">
-                            <div class="numberInfoSubTitle">每秒交易总额</div>
+                            <div class="numberInfoSubTitle">送货交易金额</div>
                             <div class="numberInfoValue">
-                                234<em class="numberInfoSuffix">元</em>
+                                23,434<em class="numberInfoSuffix">元</em>
                             </div>
                         </div>
                     </div>
@@ -87,13 +87,13 @@
 
         <div class="layui-col-xs12 layui-col-md4">
             <div class="layui-card">
-                <div class="layui-card-header">活动情况预测</div>
+                <div class="layui-card-header">物流调度情况预测</div>
                 <div class="layui-card-body" style="height: 240px;overflow: hidden;">
                     <div id="hdqkyc" style="width: 100%;height: 260px;"></div>
                 </div>
             </div>
             <div class="layui-card">
-                <div class="layui-card-header">券核效率</div>
+                <div class="layui-card-header">系统运行情况</div>
                 <div class="layui-card-body" style="height: 222px;overflow: hidden;">
                     <div id="hjxl" style="width: 100%;height: 280px;margin-top: -20px;"></div>
                 </div>
@@ -105,8 +105,8 @@
                 <div class="layui-card-body">
                     <div class="layui-tab layui-tab-brief" lay-filter="tabZZT">
                         <ul class="layui-tab-title">
-                            <li class="layui-this">销售额</li>
-                            <li>访问量</li>
+                            <li class="layui-this">订单量</li>
+                            <li>调度次数</li>
                         </ul>
                         <div class="layui-tab-content">
                             <div class="layui-tab-item layui-show">
@@ -123,7 +123,7 @@
                                             </colgroup>
                                             <thead>
                                             <tr style="background: none;color: #333;">
-                                                <th colspan="3">门店销售额排名</th>
+                                                <th colspan="3">门店订单量排名</th>
                                             </tr>
                                             </thead>
                                             <tbody>
@@ -316,10 +316,10 @@
             },
             series: [
                 {
-                    name: '券核效率',
+                    name: '系统运行状态',
                     type: 'gauge',
                     detail: {formatter: '{value}%'},
-                    data: [{value: 80, name: '跳出率'}]
+                    data: [{value: 80, name: '利用率'}]
                 }
             ]
         };
@@ -329,7 +329,7 @@
         var myCharts3 = echarts.init(document.getElementById('xse'), myEchartsTheme);
         var option3 = {
             title: {
-                text: '销售趋势',
+                text: '订单趋势',
                 textStyle: {
                     color: '#000',
                     fontSize: 14
@@ -358,7 +358,7 @@
         var myCharts4 = echarts.init(document.getElementById('fwl'), myEchartsTheme);
         var option4 = {
             title: {
-                text: '访问量趋势',
+                text: '调度次数趋势',
                 textStyle: {
                     color: '#000',
                     fontSize: 14
