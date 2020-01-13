@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.stylefeng.guns.sys.modular.system.mapper.WarehouseMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="cn.stylefeng.guns.sys.modular.system.entity.Warehouse">
+        <id column="warehouse_id" property="warehouseId" />
+        <result column="warehouse_name" property="warehouseName" />
+        <result column="warehouse_district" property="warehouseDistrict" />
+        <result column="warehouse_area" property="warehouseArea" />
+        <result column="warehouse_location" property="warehouseLocation" />
+        <result column="warehouse_type" property="warehouseType" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        warehouse_id AS "warehouseId", warehouse_name AS "warehouseName",  warehouse_type AS "warehouseType", warehouse_district AS "warehouseDistrict", warehouse_area as "warehouseArea",warehouse_location as "warehouseLocation"
+    </sql>
+
+    <select id="getWarehouses" resultType="map" parameterType="com.baomidou.mybatisplus.extension.plugins.pagination.Page">
+        select
+        <include refid="Base_Column_List"/>
+        from info_warehouse
+        where 1 = 1
+    </select>
+
+    <insert id="saveWarehouse" parameterType="cn.stylefeng.guns.sys.modular.system.entity.Warehouse" >
+       insert into info_warehouse(warehouse_name, warehouse_district,warehouse_area,warehouse_location, warehouse_type) values(#{warehouseName},#{warehouseDistrict},#{warehouseArea},#{warehouseLocation},#{warehouseType})
+    </insert>
+
+
+</mapper>

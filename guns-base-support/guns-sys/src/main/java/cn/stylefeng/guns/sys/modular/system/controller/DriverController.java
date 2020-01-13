@@ -4,8 +4,10 @@ import cn.hutool.core.bean.BeanUtil;
 import cn.stylefeng.guns.base.pojo.page.LayuiPageFactory;
 import cn.stylefeng.guns.sys.core.exception.enums.BizExceptionEnum;
 import cn.stylefeng.guns.sys.core.log.LogObjectHolder;
-import cn.stylefeng.guns.sys.modular.system.entity.Car;
-import cn.stylefeng.guns.sys.modular.system.service.CarService;
+import cn.stylefeng.guns.sys.modular.system.entity.Driver;
+import cn.stylefeng.guns.sys.modular.system.entity.Driver;
+import cn.stylefeng.guns.sys.modular.system.service.DriverService;
+import cn.stylefeng.guns.sys.modular.system.service.DriverService;
 import cn.stylefeng.roses.core.base.controller.BaseController;
 import cn.stylefeng.roses.core.util.ToolUtil;
 import cn.stylefeng.roses.kernel.model.exception.ServiceException;
@@ -26,31 +28,31 @@ import java.util.Map;
  * 车辆管理的控制器
  */
 @Controller
-@RequestMapping("info/car")
-public class CarController extends BaseController {
+@RequestMapping("info/driver")
+public class DriverController extends BaseController {
 
-    private static String PREFIX = "/modular/system/car/";
+    private static String PREFIX = "/modular/system/driver/";
 
     @Autowired
-    private CarService carService;
+    private DriverService driverService;
 
     @RequestMapping("")
     public String index(){
-        return PREFIX + "car.html";
+        return PREFIX + "driver.html";
     }
 
 
-    @RequestMapping("car_add")
-    public String carAdd() {
-        return PREFIX + "car_add.html";
+    @RequestMapping("driver_add")
+    public String Add() {
+        return PREFIX + "driver_add.html";
     }
 
-    @RequestMapping("car_update/{carId}")
-    public String carUpdate(@PathVariable Long carId, Model model) {
-        Car car = this.carService.getById(carId);
-        model.addAllAttributes(BeanUtil.beanToMap(car));
-        LogObjectHolder.me().set(car);
-        return PREFIX + "car_edit.html";
+    @RequestMapping("driver_update/{driverId}")
+    public String driverUpdate(@PathVariable Long driverId, Model model) {
+        Driver driver = this.driverService.getById(driverId);
+        model.addAllAttributes(BeanUtil.beanToMap(driver));
+        LogObjectHolder.me().set(driver);
+        return PREFIX + "driver_edit.html";
     }
 
     @RequestMapping("list")
@@ -61,7 +63,7 @@ public class CarController extends BaseController {
         Page page = LayuiPageFactory.defaultPage();
 
         //根据条件查询日志
-        List<Map<String, Object>> result = carService.getCars(page);
+        List<Map<String, Object>> result = driverService.getDrivers(page);
         page.setRecords(result);
 
         return LayuiPageFactory.createPageInfo(page);
@@ -69,35 +71,35 @@ public class CarController extends BaseController {
 
     @RequestMapping(value = "add")
     @ResponseBody
-    public Object add(Car car) {
-        if (ToolUtil.isOneEmpty(car, car.getCarNum())) {
+    public Object add(Driver driver) {
+        if (ToolUtil.isOneEmpty(driver, driver.getDriverName())) {
             throw new ServiceException(BizExceptionEnum.REQUEST_NULL);
         }
-        this.carService.saveCar(car);
+        this.driverService.saveDriver(driver);
         return SUCCESS_TIP;
     }
 
     @RequestMapping(value = "delete")
     @ResponseBody
-    public Object delete(@RequestParam Long carId) {
+    public Object delete(@RequestParam Long driverId) {
 
-        this.carService.removeById(carId);
+        this.driverService.removeById(driverId);
 
         return SUCCESS_TIP;
     }
 
     @RequestMapping(value = "update")
     @ResponseBody
-    public Object update(Car car) {
-        if (ToolUtil.isOneEmpty(car, car.getCarId())) {
+    public Object update(Driver driver) {
+        if (ToolUtil.isOneEmpty(driver, driver.getDriverId())) {
             throw new ServiceException(BizExceptionEnum.REQUEST_NULL);
         }
-        Car old = this.carService.getById(car.getCarId());
-        old.setCarNum(car.getCarNum());
-        old.setCarLoad(car.getCarLoad());
-        old.setCarStatus(car.getCarStatus());
-        old.setCarType(car.getCarType());
-        this.carService.updateById(old);
+        Driver old = this.driverService.getById(driver.getDriverId());
+        old.setDriverName(driver.getDriverName());
+        old.setDriverTel(driver.getDriverTel());
+        old.setDriverType(driver.getDriverType());
+        old.setDriverStatus(driver.getDriverStatus());
+        this.driverService.updateById(old);
         return SUCCESS_TIP;
     }
 

@@ -1,0 +1,44 @@
+@layout("/common/_form.html",{js:["/assets/modular/system/driver/warehouse_add.js"]}){
+
+<form class="layui-form" id="noticeForm" lay-filter="noticeForm">
+    <div class="layui-fluid" style="padding-bottom: 75px;">
+        <div class="layui-card">
+            <div class="layui-card-header">基本信息</div>
+            <div class="layui-card-body">
+                <div class="layui-form-item layui-row">
+                    <input name="roleId" type="hidden"/>
+                    <div class="layui-inline layui-col-md12">
+                        <label class="layui-form-label">司机姓名<span style="color: red;">*</span></label>
+                        <div class="layui-input-block">
+                            <input name="driverName" placeholder="请输入司机姓名" type="text" class="layui-input" lay-verify="required" required/>
+                        </div>
+                    </div>
+                    <div class="layui-inline layui-col-md12">
+                        <label class="layui-form-label">司机电话<span style="color: red;">*</span></label>
+                        <div class="layui-input-block">
+                            <input name="driverTel" placeholder="请输入司机电话" class="layui-input"></input>
+                        </div>
+                    </div>
+                    <div class="layui-inline layui-col-md12">
+                        <label class="layui-form-label">司机状态<span style="color: red;">*</span></label>
+                        <div class="layui-input-block">
+                            <input name="driverStatus" placeholder="请输入司机状态" class="layui-input"></input>
+                        </div>
+                    </div>
+                    <div class="layui-inline layui-col-md12">
+                        <label class="layui-form-label">驾照类型<span style="color: red;">*</span></label>
+                        <div class="layui-input-block">
+                            <input name="driverType" placeholder="请输入驾照类型" class="layui-input"></input>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group-bottom text-center">
+        <button class="layui-btn" lay-filter="btnSubmit" lay-submit>&emsp;提交&emsp;</button>
+        <button type="reset" class="layui-btn layui-btn-primary" ew-event="closeDialog">&emsp;取消&emsp;</button>
+    </div>
+</form>
+
+@}

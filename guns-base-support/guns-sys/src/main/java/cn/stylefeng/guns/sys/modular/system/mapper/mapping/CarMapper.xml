@@ -15,7 +15,7 @@
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        car_id AS "carId", car_num AS "carNum", car_size AS "carSize", car_type AS "carType", car_status AS "carStatus", car_buytime AS "carBuytime", car_defaultdriver AS "carDefaultdriver"
+        car_id AS "carId", car_num AS "carNum",  car_type AS "carType", car_status AS "carStatus", car_load as "carLoad"
     </sql>
 
     <select id="getCars" resultType="map" parameterType="com.baomidou.mybatisplus.extension.plugins.pagination.Page">
@@ -24,6 +24,10 @@
         from info_car
         where 1 = 1
     </select>
+
+    <insert id="saveCar" parameterType="cn.stylefeng.guns.sys.modular.system.entity.Car" >
+       insert into info_car(car_num, car_load, car_status, car_type) values(#{carNum},#{carLoad},#{carStatus},#{carType})
+    </insert>
 
 
 </mapper>

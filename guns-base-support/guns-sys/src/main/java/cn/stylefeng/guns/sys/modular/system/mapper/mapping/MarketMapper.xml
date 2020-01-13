@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.stylefeng.guns.sys.modular.system.mapper.MarketMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="cn.stylefeng.guns.sys.modular.system.entity.Market">
+        <id column="market_id" property="marketId" />
+        <result column="market_name" property="marketName" />
+        <result column="market_district" property="marketDistrict" />
+        <result column="market_tel" property="marketTel" />
+        <result column="market_address" property="marketAddress" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        market_id AS "marketId", market_name AS "marketName",  market_district AS "marketDistrict", market_tel as "marketTel",market_address as "marketAddress"
+    </sql>
+
+    <select id="getMarkets" resultType="map" parameterType="com.baomidou.mybatisplus.extension.plugins.pagination.Page">
+        select
+        <include refid="Base_Column_List"/>
+        from info_market
+        where 1 = 1
+    </select>
+
+    <insert id="saveMarket" parameterType="cn.stylefeng.guns.sys.modular.system.entity.Market" >
+       insert into info_market(market_name, market_district,market_tel,market_address) values(#{marketName},#{marketDistrict},#{marketTel},#{marketAddress})
+    </insert>
+
+
+</mapper>

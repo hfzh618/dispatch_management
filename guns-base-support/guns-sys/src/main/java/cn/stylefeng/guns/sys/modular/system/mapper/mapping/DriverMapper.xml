@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.stylefeng.guns.sys.modular.system.mapper.DriverMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="cn.stylefeng.guns.sys.modular.system.entity.Driver">
+        <id column="driver_id" property="driverId" />
+        <result column="driver_name" property="driverName" />
+        <result column="driver_tel" property="driverTel" />
+        <result column="driver_type" property="driverType" />
+        <result column="driver_status" property="driverStatus" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        driver_id AS "driverId", driver_name AS "driverName",  driver_type AS "driverType", driver_status AS "driverStatus", driver_tel as "driverTel"
+    </sql>
+
+    <select id="getDrivers" resultType="map" parameterType="com.baomidou.mybatisplus.extension.plugins.pagination.Page">
+        select
+        <include refid="Base_Column_List"/>
+        from info_driver
+        where 1 = 1
+    </select>
+
+    <insert id="saveDriver" parameterType="cn.stylefeng.guns.sys.modular.system.entity.Driver" >
+       insert into info_driver(driver_name, driver_tel, driver_status, driver_type) values(#{driverName},#{driverTel},#{driverStatus},#{driverType})
+    </insert>
+
+
+</mapper>
