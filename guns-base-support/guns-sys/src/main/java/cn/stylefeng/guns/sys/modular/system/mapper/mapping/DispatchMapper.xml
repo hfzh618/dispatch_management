@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.stylefeng.guns.sys.modular.system.mapper.DispatchMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="cn.stylefeng.guns.sys.modular.system.entity.Dispatch">
+        <id column="dispatch_id" property="dispatchId" />
+        <result column="dispatch_order_id" property="dispatchOrderId" />
+        <result column="dispatch_driver" property="dispatchDriver" />
+        <result column="dispatch_warehouse" property="dispatchWarehouse" />
+        <result column="dispatch_shop" property="dispatchShop" />
+        <result column="dispatch_time" property="dispatchTime" />
+    </resultMap>
+
+
+    <select id="getDispatchs" resultType="map" parameterType="com.baomidou.mybatisplus.extension.plugins.pagination.Page">
+        select
+        info_dispatch.dispatch_id,info_dispatch.dispatch_order_id,info_warehouse.warehouse_name as dispatch_warehouse,
+        info_driver.driver_name as dispatch_driver,info_dispatch.dispatch_time,info_market.market_name as dispatch_shop
+        from info_dispatch,info_warehouse,info_driver,info_market
+        where <![CDATA[ info_dispatch.dispatch_id>100 and info_dispatch.dispatch_warehouse_id = info_warehouse.warehouse_id and info_dispatch.dispatch_driver_id = info_driver.driver_id and info_dispatch.dispatch_shop_id =  info_market.market_id]]>
+    </select>
+
+    <insert id="saveDispatch" parameterType="cn.stylefeng.guns.sys.modular.system.entity.Dispatch" >
+       insert into info_dispatch(dispatch_name, dispatch_tel, dispatch_status, dispatch_type) values(#{dispatchName},#{dispatchTel},#{dispatchStatus},#{dispatchType})
+    </insert>
+
+
+</mapper>

@@ -1,0 +1,28 @@
+@layout("/common/_container.html",{plugins:["ztree"],js:["/assets/modular/system/map/market.js"]}){
+
+<link rel="stylesheet" href="https://cache.amap.com/lbs/static/main1119.css"/>
+<style type="text/css">
+    #panel {
+        position: absolute;
+        background-color: white;
+        max-height: 90%;
+        overflow-y: auto;
+        top: 10px;
+        right: 10px;
+        width: 280px;
+    }
+</style>
+
+
+<div class="layui-body-header">
+    <span class="layui-body-header-title">门店展示</span>
+</div>
+
+<div class="input-card" id="container"></div>
+
+<div id="panel"></div>
+
+
+<script type="text/javascript" src="https://cache.amap.com/lbs/static/addToolbar.js"></script>
+<script src="https://webapi.amap.com/maps?v=1.4.15&key=326c90e9d47f6a9710bc5e4594bb28f3&plugin=AMap.Autocomplete,AMap.PlaceSearch,AMap.Driving,AMap.Geocoder"></script>
+@}

@@ -1,0 +1,34 @@
+@layout("/common/_container.html",{plugins:["ztree"],js:["/assets/modular/system/map/car.js"]}){
+
+<style>
+    #container {
+        width: 100%;
+        height: 100%;
+    }
+</style>
+
+<link rel="stylesheet" href="https://a.amap.com/jsapi_demos/static/demo-center/css/demo-center.css" />
+
+
+<div class="layui-body-header">
+    <span class="layui-body-header-title">车辆监控</span>
+</div>
+
+<div class="input-card" id="container"></div>
+
+<div class="input-card">
+    <h4>轨迹回放控制</h4>
+    <div class="input-item">
+        <input type="button" class="btn" value="开始动画" id="start" onclick="startAnimation()"/>
+        <input type="button" class="btn" value="暂停动画" id="pause" onclick="pauseAnimation()"/>
+    </div>
+    <div class="input-item">
+        <input type="button" class="btn" value="继续动画" id="resume" onclick="resumeAnimation()"/>
+        <input type="button" class="btn" value="停止动画" id="stop" onclick="stopAnimation()"/>
+    </div>
+</div>
+
+
+
+<script type="text/javascript" src="https://webapi.amap.com/maps?v=1.4.15&key=326c90e9d47f6a9710bc5e4594bb28f3"></script>
+@}
