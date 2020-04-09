@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.stylefeng.guns.sys.modular.system.mapper.OrderMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="cn.stylefeng.guns.sys.modular.system.entity.Order">
+        <id column="order_id" property="orderId" />
+        <result column="order_num" property="orderNum" />
+        <result column="order_time" property="orderTime" />
+        <result column="order_shop" property="orderShop" />
+        <result column="order_product" property="orderProduct" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        order_id AS "orderId", order_num AS "orderNum",  order_time AS "orderTime", order_product AS "orderProduct",order_shop AS "orderShop",
+    </sql>
+
+    <select id="getOrders" resultType="map" parameterType="com.baomidou.mybatisplus.extension.plugins.pagination.Page">
+        select
+        <!--<include refid="Base_Column_List"/>-->
+        order_id AS "orderId", order_num AS "orderNum",  order_time AS "orderTime", order_product AS "orderProduct",order_shop AS "orderShop"
+        from info_order
+    </select>
+
+    <insert id="saveOrder" parameterType="cn.stylefeng.guns.sys.modular.system.entity.Order" >
+       insert into info_order(order_num, order_product, order_shop, order_time) values(#{orderNum},#{orderProduct},#{orderShop},#{orderTime})
+    </insert>
+
+
+</mapper>

@@ -1,0 +1,38 @@
+@layout("/common/_form.html",{js:["/assets/modular/system/dispatch/analysis.js"]}){
+
+<form class="layui-form" id="noticeForm" lay-filter="noticeForm">
+    <div class="layui-fluid" style="padding-bottom: 75px;">
+        <div class="layui-card">
+            <div class="layui-card-header">算法分析</div>
+            <div class="layui-card-body">
+
+                <div class="layui-form-item">
+                    <label class="layui-form-label">订单</label>
+                    <div class="layui-input-block">
+                        <select name="order" id="order" lay-filter="aihao">
+                            <option value="0">0号订单</option>
+                            <option value="1">1号订单</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="layui-form-item">
+                    <label class="layui-form-label">车辆</label>
+                    <div class="layui-input-block">
+                        <select name="car" id="car" lay-filter="aihao">
+                            <option value="0">0号车辆</option>
+                            <option value="1">1号车辆</option>
+                        </select>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="form-group-bottom text-center">
+        <button class="layui-btn" lay-filter="btnSubmit" lay-submit>&emsp;提交&emsp;</button>
+        <button type="reset" class="layui-btn layui-btn-primary" ew-event="closeDialog">&emsp;取消&emsp;</button>
+    </div>
+</form>
+
+@}

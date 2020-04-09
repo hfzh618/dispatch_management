@@ -1,0 +1,48 @@
+@layout("/common/_container.html",{plugins:["ztree"],js:["/assets/modular/system/train/train.js"]}){
+
+<div class="layui-body-header">
+    <span class="layui-body-header-title">车辆管理</span>
+</div>
+
+<div class="layui-fluid">
+    <div class="layui-row layui-col-space15">
+        <div class="layui-col-xs12">
+            <div class="layui-card">
+                <div class="layui-card-body">
+                    <div class="layui-form toolbar">
+                        <div class="layui-form-item">
+                            <div class="layui-inline">
+                                <input id="condition" class="layui-input" type="text" placeholder="班列编码"/>
+                            </div>
+                            <div class="layui-inline">
+                                <button id="btnGenerate" type="button" class="layui-btn icon-btn" >
+                                    <i class="layui-icon">&#xe654;</i>生成班列数据
+                                </button>
+                                <button id="btnSearch" type="button" class="layui-btn icon-btn"><i class="layui-icon">&#xe615;</i>搜索</button>
+                                @if(shiro.hasPermission("/info/train/add")){
+                                <button id="btnAdd" class="layui-btn icon-btn">
+                                    <i class="layui-icon">&#xe654;</i>添加
+                                </button>
+                                @}
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <table class="layui-table" id="trainTable" ></table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/html" id="tableBar">
+    @if(shiro.hasPermission("/info/train/update")){
+    <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="edit">修改</a>
+    @}
+    @if(shiro.hasPermission("/info/train/delete")){
+    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="delete">删除</a>
+    @}
+</script>
+
+@}

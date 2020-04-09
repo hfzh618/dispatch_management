@@ -66,6 +66,18 @@ layui.use(['layer', 'table', 'ax', 'laydate','admin','func'], function () {
     };
 
     /**
+     * 弹出添加通知
+     */
+    Dispatch.openAnalysis = function () {
+        func.open({
+            height: 420,
+            title: '调度单分析',
+            content: Feng.ctxPath + '/dispatch/info/analysis_html',
+            tableId: Dispatch.tableId
+        });
+    };
+
+    /**
      * 点击编辑通知
      *
      * @param data 点击按钮时候的行数据
@@ -74,8 +86,22 @@ layui.use(['layer', 'table', 'ax', 'laydate','admin','func'], function () {
         func.open({
             height: 420,
             title: '修改车辆',
-            content: Feng.ctxPath + "/info/dispatch/dispatch_update/" + data.dispatchId,
+            content: Feng.ctxPath + "/dispatch/info/dispatch_update/" + data.dispatchId,
             tableId: Dispatch.tableId
+        });
+    };
+
+    Dispatch.generate = function (){
+        // Feng.confirm("是否生成!");
+        alert("由算法根据门店生成班列");
+        console.log("use js generate");
+        $.ajax({
+            url:Feng.ctxPath + "/dispatch/info/generate",
+            type:"get",
+            async:"false",
+            success:function(response){
+                table.reload(Dispatch.tableId);
+            }
         });
     };
 
@@ -86,7 +112,7 @@ layui.use(['layer', 'table', 'ax', 'laydate','admin','func'], function () {
      */
     Dispatch.onDeleteDispatch = function (data) {
         var operation = function () {
-            var ajax = new $ax(Feng.ctxPath + "/info/dispatch/delete", function (data) {
+            var ajax = new $ax(Feng.ctxPath + "/dispatch/info/delete", function (data) {
                 Feng.success("删除成功!");
                 table.reload(Dispatch.tableId);
             }, function (data) {
@@ -107,6 +133,12 @@ layui.use(['layer', 'table', 'ax', 'laydate','admin','func'], function () {
     $('#btnAdd').click(function () {
         Dispatch.openAddDispatch();
     });
+
+    // 添加调用算法事件
+    $('#btnGenerate').click(function () {
+        Dispatch.openAnalysis();
+    });
+
 
     // 工具条点击事件
     table.on('tool(' + Dispatch.tableId + ')', function (obj) {

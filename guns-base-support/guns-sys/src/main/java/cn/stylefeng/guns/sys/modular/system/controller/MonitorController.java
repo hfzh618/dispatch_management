@@ -26,4 +26,14 @@ public class MonitorController {
     public String marketIndex(){
         return PREFIX + "market.html";
     }
+
+    @RequestMapping("/banlie")
+    public String banlieIndex(){
+        return PREFIX + "banlie.html";
+    }
+
+    @RequestMapping("/dynamic_order")
+    public String dynamic_order(){
+        return PREFIX + "dynamic.html";
+    }
 }

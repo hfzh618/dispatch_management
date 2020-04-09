@@ -45,6 +45,21 @@ public class DispatchController extends BaseController {
         return PREFIX + "info_add.html";
     }
 
+    @RequestMapping("analysis_html")
+    public String analysis_html() {
+        return PREFIX + "analysis.html";
+    }
+
+    @RequestMapping("analysis")
+    public void analysis(@RequestParam(value = "order",required = false) String order,@RequestParam(value = "car",required = false) String car){
+        System.out.println("order");
+        int orderID = Integer.valueOf(order.split(",")[0]);
+        int carID = Integer.valueOf(car.split(",")[0]);
+        System.out.println(orderID);
+        System.out.println("car");
+        System.out.println(carID);
+    }
+
     @RequestMapping("dispatch_update/{dispatchId}")
     public String dispatchUpdate(@PathVariable Long dispatchId, Model model) {
         Dispatch dispatch = this.dispatchService.getById(dispatchId);
@@ -95,6 +110,12 @@ public class DispatchController extends BaseController {
         Dispatch old = this.dispatchService.getById(dispatch.getDispatchId());
         this.dispatchService.updateById(old);
         return SUCCESS_TIP;
+    }
+
+    @RequestMapping(value = "generate")
+    @ResponseBody
+    public void generate() {
+        this.dispatchService.generate();
     }
 
 }

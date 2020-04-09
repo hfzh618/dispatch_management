@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.stylefeng.guns.sys.modular.system.mapper.TrainMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="cn.stylefeng.guns.sys.modular.system.entity.Train">
+        <id column="train_id" property="trainId" />
+        <result column="train_name" property="trainName" />
+        <result column="train_type" property="trainType" />
+        <result column="train_status" property="trainStatus" />
+        <result column="train_stops" property="trainStops" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        train_id AS "trainId", train_name AS "trainName",  train_type AS "trainType", train_status AS "trainStatus", train_stops as "trainStops"
+    </sql>
+
+    <select id="getTrains" resultType="map" parameterType="com.baomidou.mybatisplus.extension.plugins.pagination.Page">
+        select
+        <include refid="Base_Column_List"/>
+        from info_train
+        where 1 = 1
+    </select>
+
+    <insert id="saveTrain" parameterType="cn.stylefeng.guns.sys.modular.system.entity.Train" >
+       insert into info_train(train_name, train_stops, train_status, train_type) values(#{trainName},#{trainStops},#{trainStatus},#{trainType})
+    </insert>
+
+
+</mapper>

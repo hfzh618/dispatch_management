@@ -1,0 +1,72 @@
+@layout("/common/_container.html",{plugins:["ztree"],js:["/assets/modular/system/map/banlie.js"]}){
+
+
+
+<style>
+    html,
+    body,
+    #container {
+        width: 100%;
+        height: 100%;
+        margin: 0px;
+    }
+
+    #loadingTip {
+        position: absolute;
+        z-index: 9999;
+        top: 0;
+        left: 0;
+        padding: 3px 10px;
+        background: red;
+        color: #fff;
+        font-size: 14px;
+    }
+    .amap-simple-marker.my-marker .amap-simple-marker-label {
+        color: #fff;
+        font-size: 16px;
+        font-style: italic;
+        text-decoration: line-through;
+    }
+</style>
+
+<link rel="stylesheet" href="https://a.amap.com/jsapi_demos/static/demo-center/css/demo-center.css" />
+<link rel="stylesheet" href="https://webapi.amap.com/ui/1.0/ui/misc/PathSimplifier/examples/">
+
+
+<div class="layui-body-header">
+    <span class="layui-body-header-title">班列展示</span>
+</div>
+<div id="container"></div>
+<div class="input-card" style="width:13rem">
+    <h4>选择班列</h4>
+    <div id="lang">
+        <div class="input-item"><input id="0" name="language" type="radio" checked="checked"><span class="input-text">0号班列</span></div>
+        <div class="input-item"><input id="1" name="language" type="radio"><span class="input-text">1号班列</span></div>
+        <div class="input-item"><input id="2" name="language" type="radio"><span class="input-text">2号班列</span></div>
+        <div class="input-item"><input id="3" name="language" type="radio"><span class="input-text">3号班列</span></div>
+        <div class="input-item"><input id="4" name="language" type="radio"><span class="input-text">4号班列</span></div>
+        <div class="input-item"><input id="5" name="language" type="radio"><span class="input-text">5号班列</span></div>
+        <div class="input-item"><input id="6" name="language" type="radio"><span class="input-text">6号班列</span></div>
+        <div class="input-item"><input id="7" name="language" type="radio"><span class="input-text">7号班列</span></div>
+        <div class="input-item"><input id="8" name="language" type="radio"><span class="input-text">8号班列</span></div>
+        <div class="input-item"><input id="9" name="language" type="radio"><span class="input-text">9号班列</span></div>
+        <div class="input-item"><input id="10" name="language" type="radio"><span class="input-text">10号班列</span></div>
+        <div class="input-item"><input id="11" name="language" type="radio"><span class="input-text">11号班列</span></div>
+        <div class="input-item"><input id="12" name="language" type="radio"><span class="input-text">12号班列</span></div>
+        <div class="input-item"><input id="13" name="language" type="radio"><span class="input-text">13号班列</span></div>
+        <div class="input-item"><input id="14" name="language" type="radio"><span class="input-text">14号班列</span></div>
+        <div class="input-item"><input id="15" name="language" type="radio"><span class="input-text">15号班列</span></div>
+        <div class="input-item"><input id="16" name="language" type="radio"><span class="input-text">16号班列</span></div>
+        <div class="input-item"><input id="17" name="language" type="radio"><span class="input-text">17号班列</span></div>
+        <div class="input-item"><input id="18" name="language" type="radio"><span class="input-text">18号班列</span></div>
+        <div class="input-item"><input id="19" name="language" type="radio"><span class="input-text">19号班列</span></div>
+    </div>
+</div>
+
+
+<script type="text/javascript" src="https://webapi.amap.com/maps?v=1.4.15&key=326c90e9d47f6a9710bc5e4594bb28f3"></script>
+
+<script src="//webapi.amap.com/ui/1.0/main.js?v=1.0.11"></script>
+
+
+@}
