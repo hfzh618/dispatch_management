@@ -6,19 +6,98 @@
             <div class="layui-card-header">基本信息</div>
             <div class="layui-card-body">
                 <div class="layui-form-item layui-row">
-                    <input name="noticeId" value="${noticeId}" type="hidden"/>
+                    <input name="carId" value="${carId}" type="hidden"/>
                     <div class="layui-inline layui-col-md12">
-                        <label class="layui-form-label">标题<span style="color: red;">*</span></label>
+                        <label class="layui-form-label">车牌号<span style="color: red;">*</span></label>
                         <div class="layui-input-block">
-                            <input name="title" value="${title}" placeholder="请输入标题" type="text" class="layui-input" lay-verify="required" required/>
+                            <input name="carNum" value="${carNum}" placeholder="请输入车牌号" type="text" class="layui-input" lay-verify="required" required/>
                         </div>
                     </div>
+
                     <div class="layui-inline layui-col-md12">
-                        <label class="layui-form-label">内容<span style="color: red;">*</span></label>
+                        <label class="layui-form-label">车辆状态<span style="color: red;">*</span></label>
                         <div class="layui-input-block">
-                            <textarea name="content" placeholder="请输入内容" class="layui-textarea">${content}</textarea>
+                            <input name="carStatus" value="${carStatus}" placeholder="请输入车辆状态" type="text" class="layui-input" lay-verify="required" required/>
                         </div>
                     </div>
+
+                    <div class="layui-inline layui-col-md12">
+                        <label class="layui-form-label">车辆类型<span style="color: red;">*</span></label>
+                        <div class="layui-input-block">
+                            <input name="carType" value="${carType}" placeholder="请输入车牌类型" type="text" class="layui-input" lay-verify="required" required/>
+                        </div>
+                    </div>
+
+                    <div class="layui-inline layui-col-md12">
+                        <label class="layui-form-label">承运商编码<span style="color: red;">*</span></label>
+                        <div class="layui-input-block">
+                            <input name="carrier_code" value="${carrier_code}" placeholder="请输入承运商编码" type="text" class="layui-input" lay-verify="required" required/>
+                        </div>
+                    </div>
+
+                    <div class="layui-inline layui-col-md12">
+                        <label class="layui-form-label">承运商名称<span style="color: red;">*</span></label>
+                        <div class="layui-input-block">
+                            <input name="carrier_name" value="${carrier_name}" placeholder="请输入承运商名称" type="text" class="layui-input" lay-verify="required" required/>
+                        </div>
+                    </div>
+
+                    <div class="layui-inline layui-col-md12">
+                        <label class="layui-form-label">可用数量<span style="color: red;">*</span></label>
+                        <div class="layui-input-block">
+                            <input name="avaliable_num" value="${avaliable_num}" placeholder="请输入可用数量" type="text" class="layui-input" lay-verify="required" required/>
+                        </div>
+                    </div>
+
+                    <div class="layui-inline layui-col-md12">
+                        <label class="layui-form-label">额定载重<span style="color: red;">*</span></label>
+                        <div class="layui-input-block">
+                            <input name="rated_load" value="${rated_load}" placeholder="请输入额定载重" type="text" class="layui-input" lay-verify="required" required/>
+                        </div>
+                    </div>
+
+                    <div class="layui-inline layui-col-md12">
+                        <label class="layui-form-label">行驶速度<span style="color: red;">*</span></label>
+                        <div class="layui-input-block">
+                            <input name="car_speed" value="${car_speed}" placeholder="请输入行驶速度" type="text" class="layui-input" lay-verify="required" required/>
+                        </div>
+                    </div>
+
+                    <div class="layui-inline layui-col-md12">
+                        <label class="layui-form-label">容积<span style="color: red;">*</span></label>
+                        <div class="layui-input-block">
+                            <input name="volume" value="${volume}" placeholder="请输入容积" type="text" class="layui-input" lay-verify="required" required/>
+                        </div>
+                    </div>
+
+                    <div class="layui-inline layui-col-md12">
+                        <label class="layui-form-label">允许类型<span style="color: red;">*</span></label>
+                        <div class="layui-input-block">
+                            <input name="permit_type" value="${permit_type}" placeholder="请输入允许类型" type="text" class="layui-input" lay-verify="required" required/>
+                        </div>
+                    </div>
+
+                    <div class="layui-inline layui-col-md12">
+                        <label class="layui-form-label">启用成本<span style="color: red;">*</span></label>
+                        <div class="layui-input-block">
+                            <input name="start_cost" value="${start_cost}" placeholder="请输入启用成本" type="text" class="layui-input" lay-verify="required" required/>
+                        </div>
+                    </div>
+
+                    <div class="layui-inline layui-col-md12">
+                        <label class="layui-form-label">停车成本<span style="color: red;">*</span></label>
+                        <div class="layui-input-block">
+                            <input name="park_cost" value="${park_cost}" placeholder="请输入停车成本" type="text" class="layui-input" lay-verify="required" required/>
+                        </div>
+                    </div>
+
+                    <div class="layui-inline layui-col-md12">
+                        <label class="layui-form-label">每公里成本<span style="color: red;">*</span></label>
+                        <div class="layui-input-block">
+                            <input name="perkm_cost" value="${perkm_cost}" placeholder="请输入每公里成本" type="text" class="layui-input" lay-verify="required" required/>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>

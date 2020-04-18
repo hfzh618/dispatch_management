@@ -8,6 +8,7 @@ import cn.stylefeng.guns.sys.modular.system.entity.Driver;
 import cn.stylefeng.guns.sys.modular.system.entity.Driver;
 import cn.stylefeng.guns.sys.modular.system.service.DriverService;
 import cn.stylefeng.guns.sys.modular.system.service.DriverService;
+import cn.stylefeng.guns.sys.modular.system.warpper.NoticeWrapper;
 import cn.stylefeng.roses.core.base.controller.BaseController;
 import cn.stylefeng.roses.core.util.ToolUtil;
 import cn.stylefeng.roses.kernel.model.exception.ServiceException;
@@ -51,22 +52,15 @@ public class DriverController extends BaseController {
     public String driverUpdate(@PathVariable Long driverId, Model model) {
         Driver driver = this.driverService.getById(driverId);
         model.addAllAttributes(BeanUtil.beanToMap(driver));
-        LogObjectHolder.me().set(driver);
         return PREFIX + "driver_edit.html";
     }
 
     @RequestMapping("list")
-    //@Permission(Const.ADMIN_NAME)
     @ResponseBody
-    public Object list(){
-        //获取分页参数
-        Page page = LayuiPageFactory.defaultPage();
-
-        //根据条件查询日志
-        List<Map<String, Object>> result = driverService.getDrivers(page);
-        page.setRecords(result);
-
-        return LayuiPageFactory.createPageInfo(page);
+    public Object list(String condition){
+        Page<Map<String, Object>> list = this.driverService.list(condition);
+        Page<Map<String, Object>> wrap = new NoticeWrapper(list).wrap();
+        return LayuiPageFactory.createPageInfo(wrap);
     }
 
     @RequestMapping(value = "add")
@@ -75,7 +69,7 @@ public class DriverController extends BaseController {
         if (ToolUtil.isOneEmpty(driver, driver.getDriverName())) {
             throw new ServiceException(BizExceptionEnum.REQUEST_NULL);
         }
-        this.driverService.saveDriver(driver);
+        this.driverService.save(driver);
         return SUCCESS_TIP;
     }
 

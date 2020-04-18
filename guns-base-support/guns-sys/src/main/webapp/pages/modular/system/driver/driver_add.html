@@ -1,4 +1,4 @@
-@layout("/common/_form.html",{js:["/assets/modular/system/driver/warehouse_add.js"]}){
+@layout("/common/_form.html",{js:["/assets/modular/system/driver/driver_add.js"]}){
 
 <form class="layui-form" id="noticeForm" lay-filter="noticeForm">
     <div class="layui-fluid" style="padding-bottom: 75px;">
@@ -7,6 +7,13 @@
             <div class="layui-card-body">
                 <div class="layui-form-item layui-row">
                     <input name="roleId" type="hidden"/>
+                    <div class="layui-inline layui-col-md12">
+                        <label class="layui-form-label">司机id<span style="color: red;">*</span></label>
+                        <div class="layui-input-block">
+                            <input name="driverId" placeholder="请输入司机id" type="text" class="layui-input" lay-verify="required" required/>
+                        </div>
+                    </div>
+
                     <div class="layui-inline layui-col-md12">
                         <label class="layui-form-label">司机姓名<span style="color: red;">*</span></label>
                         <div class="layui-input-block">

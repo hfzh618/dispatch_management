@@ -107,9 +107,11 @@ layui.use(['layer', 'form', 'table', 'admin', 'ax', 'func'], function () {
 
     // 工具条点击事件
     table.on('tool(' + Notice.tableId + ')', function (obj) {
+
         var data = obj.data;
         var layEvent = obj.event;
-
+        alert(data);
+        alert(layEvent);
         if (layEvent === 'edit') {
             Notice.onEditNotice(data);
         } else if (layEvent === 'delete') {

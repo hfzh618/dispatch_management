@@ -21,35 +21,39 @@ public class Dispatch implements Serializable {
      * 主键
      */
     @TableId(value = "dispatch_id", type = IdType.ID_WORKER)
-    private Long dispatchId;
+    private Long dispatch_id;
 
     /**
      * 车牌号码
      */
     @TableField("dispatch_order_id")
-    private Long dispatchOrderId;
+    private Long dispatch_order_id;
 
     /**
      * 汽车容量
      */
-    @TableField("dispatch_driver")
-    private String dispatchDriver;
+    @TableField("dispatch_driver_id")
+    private String dispatch_driver_id;
 
-    @TableField("dispatch_warehuose")
-    private String dispatchWarehouse;
+    @TableField("dispatch_warehouse_id")
+    private String dispatch_warehouse_id;
 
 
     /**
      * 汽车状态
      */
-    @TableField("dispatch_shop")
-    private String dispatchShop;
+    @TableField("dispatch_shop_id")
+    private int dispatch_shop_id;
+
+
+    @TableField("dispatch_shop_type")
+    private String dispatch_shop_type;
 
     /**
      * 汽车类型
      */
-    @TableField("dispatch_type")
-    private String dispatchTime;
+    @TableField("dispatch_time")
+    private String dispatch_time;
 
 
     public static long getSerialVersionUID() {

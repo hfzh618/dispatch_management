@@ -1,0 +1,74 @@
+@layout("/common/_form.html",{js:["/assets/modular/system/zhuangche/zhuangche.js"]}){
+
+<form class="layui-form" id="noticeForm" lay-filter="noticeForm">
+    <div class="layui-fluid" style="padding-bottom: 75px;">
+        <div class="layui-card">
+            <div class="layui-card-header">基本信息</div>
+            <div class="layui-card-body">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">班列id</label>
+                    <div class="layui-inline">
+                        <select name="city" lay-verify="required" id="train">
+                            <option value=""></option>
+                            <option value="1587133260">1587133260</option>
+                            <option value="1587133275">1587133275</option>
+                            <option value="1587133350">1587133350</option>
+                            <option value="1587181857">1587181857</option>
+                            <option value="1587180324">1587180324</option>
+                            <option value="1587134464">1587134464</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">车辆id</label>
+                    <div class="layui-inline">
+                        <select name="city" lay-verify="required" id="car">
+                            <option value=""></option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <button class="layui-btn" lay-filter="btnSubmit" lay-submit>&emsp;提交&emsp;</button>
+                    <button type="reset" class="layui-btn layui-btn-primary" ew-event="closeDialog">&emsp;取消&emsp;</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+<!--<table class="layui-table">-->
+    <!--<colgroup>-->
+        <!--<col width="150">-->
+        <!--<col width="200">-->
+        <!--<col>-->
+    <!--</colgroup>-->
+    <!--<thead>-->
+    <!--<tr>-->
+        <!--<th>左侧车厢</th>-->
+        <!--<th>右侧车厢</th>-->
+    <!--</tr>-->
+    <!--</thead>-->
+    <!--<tbody>-->
+    <!--<tr>-->
+        <!--<td>贤心</td>-->
+        <!--<td>2016-11-29</td>-->
+    <!--</tr>-->
+    <!--<tr>-->
+        <!--<td>许闲心</td>-->
+        <!--<td>2016-11-28</td>-->
+    <!--</tr>-->
+    <!--</tbody>-->
+<!--</table>-->
+
+
+
+
+<script>
+
+</script>
+@}

@@ -17,8 +17,5 @@ public interface WarehouseMapper extends BaseMapper<Warehouse> {
     /**
      * 查询车辆信息
      * */
-
-    List<Map<String,Object>> getWarehouses(@Param("page") Page page);
-
-    void saveWarehouse(Warehouse warehouse);
+    Page<Map<String, Object>> list(@Param("page") Page page, @Param("condition") String condition);
 }

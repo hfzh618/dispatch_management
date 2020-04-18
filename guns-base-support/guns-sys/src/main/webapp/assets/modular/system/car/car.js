@@ -1,7 +1,8 @@
-layui.use(['layer', 'table', 'ax', 'laydate','admin','func'], function () {
+layui.use(['layer', 'form','table', 'ax', 'laydate','admin','func'], function () {
     var $ = layui.$;
     var $ax = layui.ax;
     var layer = layui.layer;
+    var form = layui.form;
     var table = layui.table;
     var laydate = layui.laydate;
     var admin = layui.admin;
@@ -20,11 +21,21 @@ layui.use(['layer', 'table', 'ax', 'laydate','admin','func'], function () {
     Car.initColumn = function () {
         return [[
             {type: 'checkbox'},
-            {field: 'carId',  hide: true, sort: true, title: 'id'},
+            {field: 'carId',  align: "center", sort: true, title: 'id'},
             {field: 'carNum', align: "center", sort: true, title: '车牌号'},
-            {field: 'carLoad', align: "center", sort: true, title: '车辆大小'},
+            {field: 'carLoad', align: "center", sort: true, title: '车辆载重'},
             {field: 'carStatus', align: "center", sort: true, title: '车辆状态'},
             {field: 'carType', align: "center", sort: true, title: '车辆类型'},
+            {field: 'carrier_code', align: "center", sort: true, title: '承运商编码'},
+            {field: 'carrier_name', align: "center", sort: true, title: '承运商名称'},
+            {field: 'avaliable_num', align: "center", sort: true, title: '可用数量'},
+            {field: 'rated_load', align: "center", sort: true, title: '额定载重'},
+            {field: 'car_speed', align: "center", sort: true, title: '行驶速度'},
+            {field: 'volume', align: "center", sort: true, title: '容积'},
+            {field: 'permit_type', align: "center", sort: true, title: '允许类型'},
+            {field: 'start_cost', align: "center", sort: true, title: '启用成本'},
+            {field: 'park_cost', align: "center", sort: true, title: '停车成本'},
+            {field: 'perkm_cost', align: "center", sort: true, title: '每公里成本'},
             {align: 'center', toolbar: '#tableBar', title: '操作', minWidth: 200}
         ]];
     };
@@ -70,6 +81,7 @@ layui.use(['layer', 'table', 'ax', 'laydate','admin','func'], function () {
      * @param data 点击按钮时候的行数据
      */
     Car.onEditCar = function (data) {
+        alert("修改车辆");
         func.open({
             height: 420,
             title: '修改车辆',

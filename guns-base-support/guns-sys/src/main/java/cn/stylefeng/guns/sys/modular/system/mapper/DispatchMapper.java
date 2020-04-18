@@ -13,11 +13,5 @@ import java.util.Map;
  */
 public interface DispatchMapper extends BaseMapper<Dispatch> {
 
-    /**
-     * 查询车辆信息
-     * */
-
-    List<Map<String,Object>> getDispatchs(@Param("page") Page page);
-
-    void saveDispatch(Dispatch dispatch);
+    Page<Map<String, Object>> list(@Param("page") Page page, @Param("condition") String condition);
 }

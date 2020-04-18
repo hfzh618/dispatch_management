@@ -1,0 +1,62 @@
+@layout("/common/_form.html",{js:["/assets/modular/system/dispatch/dispatch_edit.js"]}){
+
+<form class="layui-form" id="noticeForm" lay-filter="noticeForm">
+    <div class="layui-fluid" style="padding-bottom: 75px;">
+        <div class="layui-card">
+            <div class="layui-card-header">基本信息</div>
+            <div class="layui-card-body">
+                <div class="layui-form-item layui-row">
+                    <input name="dispatch_id" value="${dispatch_id}" type="hidden"/>
+
+                    <div class="layui-inline layui-col-md12">
+                        <label class="layui-form-label">订单id<span style="color: red;">*</span></label>
+                        <div class="layui-input-block">
+                            <input name="dispatch_order_id" value="${dispatch_order_id}" placeholder="请输入订单id" type="text" class="layui-input" lay-verify="required" required/>
+                        </div>
+                    </div>
+
+                    <div class="layui-inline layui-col-md12">
+                        <label class="layui-form-label">司机id<span style="color: red;">*</span></label>
+                        <div class="layui-input-block">
+                            <input name="dispatch_driver_id" value="${dispatch_driver_id}" placeholder="请输入司机id" type="text" class="layui-input" lay-verify="required" required/>
+                        </div>
+                    </div>
+
+                    <div class="layui-inline layui-col-md12">
+                        <label class="layui-form-label">仓库id<span style="color: red;">*</span></label>
+                        <div class="layui-input-block">
+                            <input name="dispatch_warehouse_id" value="${dispatch_warehouse_id}" placeholder="请输入仓库id" type="text" class="layui-input" lay-verify="required" required/>
+                        </div>
+                    </div>
+
+                    <div class="layui-inline layui-col-md12">
+                        <label class="layui-form-label">门店id<span style="color: red;">*</span></label>
+                        <div class="layui-input-block">
+                            <input name="dispatch_shop_id" value="${dispatch_shop_id}" placeholder="请输入门店id" type="text" class="layui-input" lay-verify="required" required/>
+                        </div>
+                    </div>
+
+                    <div class="layui-inline layui-col-md12">
+                        <label class="layui-form-label">门店类型<span style="color: red;">*</span></label>
+                        <div class="layui-input-block">
+                            <input name="dispatch_shop_type" value="${dispatch_shop_type}" placeholder="请输入门店类型" type="text" class="layui-input" lay-verify="required" required/>
+                        </div>
+                    </div>
+
+                    <div class="layui-inline layui-col-md12">
+                        <label class="layui-form-label">配送时间<span style="color: red;">*</span></label>
+                        <div class="layui-input-block">
+                            <input name="dispatch_time" value="${dispatch_time}" placeholder="请输入配送时间" type="text" class="layui-input" lay-verify="required" required/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group-bottom text-center">
+        <button class="layui-btn" lay-filter="btnSubmit" lay-submit>&emsp;提交&emsp;</button>
+        <button type="reset" class="layui-btn layui-btn-primary" ew-event="closeDialog">&emsp;取消&emsp;</button>
+    </div>
+</form>
+
+@}

@@ -18,7 +18,5 @@ public interface DriverMapper extends BaseMapper<Driver> {
      * 查询车辆信息
      * */
 
-    List<Map<String,Object>> getDrivers(@Param("page") Page page);
-
-    void saveDriver(Driver driver);
+    Page<Map<String, Object>> list(@Param("page") Page page, @Param("condition") String condition);
 }

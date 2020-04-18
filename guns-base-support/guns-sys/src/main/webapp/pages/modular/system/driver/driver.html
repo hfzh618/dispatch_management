@@ -23,7 +23,7 @@
                         </div>
                     </div>
 
-                    <table class="layui-table" id="driverTable" ></table>
+                    <table class="layui-table" lay-filter="noticeTable" id="noticeTable" ></table>
                 </div>
             </div>
         </div>
@@ -38,5 +38,9 @@
     <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="delete">删除</a>
     @}
 </script>
+
+<script type="text/html" id="statusTpl">
+    <input type="checkbox" lay-filter="status" value="{{d.userId}}" lay-skin="switch" lay-text="正常|冻结" {{d.status=='ENABLE'?'checked':''}} />
+</script>s
 
 @}

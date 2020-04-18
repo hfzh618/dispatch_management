@@ -1,23 +1,23 @@
-layui.use(['layer', 'table', 'ax', 'laydate','admin','func'], function () {
+layui.use(['layer', 'form', 'table', 'admin', 'ax', 'func'], function () {
     var $ = layui.$;
-    var $ax = layui.ax;
     var layer = layui.layer;
+    var form = layui.form;
     var table = layui.table;
-    var laydate = layui.laydate;
+    var $ax = layui.ax;
     var admin = layui.admin;
     var func = layui.func;
 
     /**
-     * 系统管理--登陆日志
+     * 系统管理--消息管理
      */
-    var Driver = {
-        tableId: "driverTable"   //表格id
+    var Notice = {
+        tableId: "noticeTable"    //表格id
     };
 
     /**
      * 初始化表格的列
      */
-    Driver.initColumn = function () {
+    Notice.initColumn = function () {
         return [[
             {type: 'checkbox'},
             {field: 'driverId',  hide: true, sort: true, title: 'id'},
@@ -29,25 +29,13 @@ layui.use(['layer', 'table', 'ax', 'laydate','admin','func'], function () {
         ]];
     };
 
-
-
-    // 渲染表格
-    var tableResult = table.render({
-        elem: '#' + Driver.tableId,
-        url: Feng.ctxPath + '/info/driver/list',
-        page: true,
-        height: "full-98",
-        cellMinWidth: 100,
-        cols: Driver.initColumn()
-    });
-
     /**
      * 点击查询按钮
      */
-    Driver.search = function () {
+    Notice.search = function () {
         var queryData = {};
         queryData['condition'] = $("#condition").val();
-        table.reload(Driver.tableId, {
+        table.reload(Notice.tableId, {
             where: queryData, page: {curr: 1}
         });
     };
@@ -55,12 +43,12 @@ layui.use(['layer', 'table', 'ax', 'laydate','admin','func'], function () {
     /**
      * 弹出添加通知
      */
-    Driver.openAddDriver = function () {
+    Notice.openAddNotice = function () {
         func.open({
             height: 420,
-            title: '添加车辆',
+            title: '添加司机',
             content: Feng.ctxPath + '/info/driver/driver_add',
-            tableId: Driver.tableId
+            tableId: Notice.tableId
         });
     };
 
@@ -69,12 +57,12 @@ layui.use(['layer', 'table', 'ax', 'laydate','admin','func'], function () {
      *
      * @param data 点击按钮时候的行数据
      */
-    Driver.onEditDriver = function (data) {
+    Notice.onEditNotice = function (data) {
         func.open({
             height: 420,
-            title: '修改车辆',
-            content: Feng.ctxPath + "/info/driver/driver_update/" + data.driverId,
-            tableId: Driver.tableId
+            title: '修改司机信息',
+            content: Feng.ctxPath + "info/driver/driver_update/" + data.driverId,
+            tableId: Notice.tableId
         });
     };
 
@@ -83,43 +71,48 @@ layui.use(['layer', 'table', 'ax', 'laydate','admin','func'], function () {
      *
      * @param data 点击按钮时候的行数据
      */
-    Driver.onDeleteDriver = function (data) {
+    Notice.onDeleteNotice = function (data) {
         var operation = function () {
             var ajax = new $ax(Feng.ctxPath + "/info/driver/delete", function (data) {
                 Feng.success("删除成功!");
-                table.reload(Driver.tableId);
+                table.reload(Notice.tableId);
             }, function (data) {
                 Feng.error("删除失败!" + data.responseJSON.message + "!");
             });
             ajax.set("driverId", data.driverId);
             ajax.start();
         };
-        Feng.confirm("是否删除车辆 " + data.driverNum + "?", operation);
+        Feng.confirm("是否删除司机" + data.driverName + "?", operation);
     };
+
+    // 渲染表格
+    var tableResult = table.render({
+        elem: '#' + Notice.tableId,
+        url: Feng.ctxPath + '/info/driver/list',
+        page: true,
+        height: "full-98",
+        cellMinWidth: 100,
+        cols: Notice.initColumn()
+    });
 
     // 搜索按钮点击事件
     $('#btnSearch').click(function () {
-        Driver.search();
+        Notice.search();
     });
 
     // 添加按钮点击事件
     $('#btnAdd').click(function () {
-        Driver.openAddDriver();
+        Notice.openAddNotice();
     });
 
     // 工具条点击事件
-    table.on('tool(' + Driver.tableId + ')', function (obj) {
+    table.on('tool(' + Notice.tableId + ')', function (obj) {
         var data = obj.data;
         var layEvent = obj.event;
-
         if (layEvent === 'edit') {
-            console.log('edit');
-            Driver.onEditDriver(data);
+            Notice.onEditNotice(data);
         } else if (layEvent === 'delete') {
-            console.log("click delete");
-            console.log(data);
-            Driver.onDeleteDriver(data);
+            Notice.onDeleteNotice(data);
         }
     });
-
 });

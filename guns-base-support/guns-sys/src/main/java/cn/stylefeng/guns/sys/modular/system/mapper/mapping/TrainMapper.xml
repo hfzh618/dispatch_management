@@ -23,6 +23,18 @@
         where 1 = 1
     </select>
 
+    <select id="list" resultType="map">
+        select
+        <include refid="Base_Column_List"></include>
+        from info_train
+        <!--<if test="condition != null and condition != ''">-->
+            <!--where train_name like CONCAT('%',#{condition},'%') or train_id like CONCAT('%',#{condition},'%')-->
+        <!--</if>-->
+        where train_id > 1000
+    </select>
+
+
+
     <insert id="saveTrain" parameterType="cn.stylefeng.guns.sys.modular.system.entity.Train" >
        insert into info_train(train_name, train_stops, train_status, train_type) values(#{trainName},#{trainStops},#{trainStatus},#{trainType})
     </insert>

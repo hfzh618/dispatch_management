@@ -6,6 +6,7 @@ import cn.stylefeng.guns.sys.core.exception.enums.BizExceptionEnum;
 import cn.stylefeng.guns.sys.core.log.LogObjectHolder;
 import cn.stylefeng.guns.sys.modular.system.entity.Train;
 import cn.stylefeng.guns.sys.modular.system.service.TrainService;
+import cn.stylefeng.guns.sys.modular.system.warpper.NoticeWrapper;
 import cn.stylefeng.roses.core.base.controller.BaseController;
 import cn.stylefeng.roses.core.util.ToolUtil;
 import cn.stylefeng.roses.kernel.model.exception.ServiceException;
@@ -50,22 +51,15 @@ public class TrainController extends BaseController {
     public String trainUpdate(@PathVariable Long trainId, Model model) {
         Train train = this.trainService.getById(trainId);
         model.addAllAttributes(BeanUtil.beanToMap(train));
-        LogObjectHolder.me().set(train);
         return PREFIX + "train_edit.html";
     }
 
     @RequestMapping("list")
-    //@Permission(Const.ADMIN_NAME)
     @ResponseBody
-    public Object list(){
-        //获取分页参数
-        Page page = LayuiPageFactory.defaultPage();
-
-        //根据条件查询日志
-        List<Map<String, Object>> result = trainService.getTrains(page);
-        page.setRecords(result);
-
-        return LayuiPageFactory.createPageInfo(page);
+    public Object list(String condition){
+        Page<Map<String, Object>> list = this.trainService.list(condition);
+        Page<Map<String, Object>> wrap = new NoticeWrapper(list).wrap();
+        return LayuiPageFactory.createPageInfo(wrap);
     }
 
     @RequestMapping(value = "add")
@@ -74,7 +68,7 @@ public class TrainController extends BaseController {
         if (ToolUtil.isOneEmpty(train, train.getTrainName())) {
             throw new ServiceException(BizExceptionEnum.REQUEST_NULL);
         }
-        this.trainService.saveTrain(train);
+        this.trainService.save(train);
         return SUCCESS_TIP;
     }
 
@@ -96,6 +90,8 @@ public class TrainController extends BaseController {
         Train old = this.trainService.getById(train.getTrainId());
         old.setTrainStatus(train.getTrainStatus());
         old.setTrainType(train.getTrainType());
+        old.setTrainName(train.getTrainName());
+        old.setTrainStops(train.getTrainStops());
         this.trainService.updateById(old);
         return SUCCESS_TIP;
     }
@@ -104,8 +100,8 @@ public class TrainController extends BaseController {
     @ResponseBody
     public Object generate() throws IOException {
         System.out.println("/info/train/generate is used");
-        this.trainService.generate();
-        return list();
+//        this.trainService.generate();
+        return list("");
     }
 
 //    @RequestMapping(value = "banlieData")

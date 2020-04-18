@@ -7,6 +7,14 @@
             <div class="layui-card-body">
                 <div class="layui-form-item layui-row">
                     <input name="roleId" type="hidden"/>
+
+                    <div class="layui-inline layui-col-md12">
+                        <label class="layui-form-label">仓库ID<span style="color: red;">*</span></label>
+                        <div class="layui-input-block">
+                            <input name="warehouseId" placeholder="请输入仓库ID" type="text" class="layui-input" lay-verify="required" required/>
+                        </div>
+                    </div>
+
                     <div class="layui-inline layui-col-md12">
                         <label class="layui-form-label">仓库名称<span style="color: red;">*</span></label>
                         <div class="layui-input-block">

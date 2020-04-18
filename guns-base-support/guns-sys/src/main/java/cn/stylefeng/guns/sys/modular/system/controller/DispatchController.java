@@ -6,6 +6,7 @@ import cn.stylefeng.guns.sys.core.exception.enums.BizExceptionEnum;
 import cn.stylefeng.guns.sys.core.log.LogObjectHolder;
 import cn.stylefeng.guns.sys.modular.system.entity.Dispatch;
 import cn.stylefeng.guns.sys.modular.system.service.DispatchService;
+import cn.stylefeng.guns.sys.modular.system.warpper.NoticeWrapper;
 import cn.stylefeng.roses.core.base.controller.BaseController;
 import cn.stylefeng.roses.core.util.ToolUtil;
 import cn.stylefeng.roses.kernel.model.exception.ServiceException;
@@ -60,43 +61,36 @@ public class DispatchController extends BaseController {
         System.out.println(carID);
     }
 
-    @RequestMapping("dispatch_update/{dispatchId}")
-    public String dispatchUpdate(@PathVariable Long dispatchId, Model model) {
-        Dispatch dispatch = this.dispatchService.getById(dispatchId);
+    @RequestMapping("dispatch_update/{dispatch_id}")
+    public String dispatchUpdate(@PathVariable Long dispatch_id, Model model) {
+        Dispatch dispatch = this.dispatchService.getById(dispatch_id);
         model.addAllAttributes(BeanUtil.beanToMap(dispatch));
-        LogObjectHolder.me().set(dispatch);
         return PREFIX + "dispatch_edit.html";
     }
 
     @RequestMapping("list")
-    //@Permission(Const.ADMIN_NAME)
     @ResponseBody
-    public Object list(){
-        //获取分页参数
-        Page page = LayuiPageFactory.defaultPage();
-
-        //根据条件查询日志
-        List<Map<String, Object>> result = dispatchService.getDispatchs(page);
-        page.setRecords(result);
-
-        return LayuiPageFactory.createPageInfo(page);
+    public Object list(String condition){
+        Page<Map<String, Object>> list = this.dispatchService.list(condition);
+        Page<Map<String, Object>> wrap = new NoticeWrapper(list).wrap();
+        return LayuiPageFactory.createPageInfo(wrap);
     }
 
     @RequestMapping(value = "add")
     @ResponseBody
     public Object add(Dispatch dispatch) {
-        if (ToolUtil.isOneEmpty(dispatch, dispatch.getDispatchId())) {
+        if (ToolUtil.isOneEmpty(dispatch, dispatch.getDispatch_id())) {
             throw new ServiceException(BizExceptionEnum.REQUEST_NULL);
         }
-        this.dispatchService.saveDispatch(dispatch);
+        this.dispatchService.save(dispatch);
         return SUCCESS_TIP;
     }
 
     @RequestMapping(value = "delete")
     @ResponseBody
-    public Object delete(@RequestParam Long dispatchId) {
+    public Object delete(@RequestParam Long dispatch_id) {
 
-        this.dispatchService.removeById(dispatchId);
+        this.dispatchService.removeById(dispatch_id);
 
         return SUCCESS_TIP;
     }
@@ -104,10 +98,16 @@ public class DispatchController extends BaseController {
     @RequestMapping(value = "update")
     @ResponseBody
     public Object update(Dispatch dispatch) {
-        if (ToolUtil.isOneEmpty(dispatch, dispatch.getDispatchId())) {
+        if (ToolUtil.isOneEmpty(dispatch, dispatch.getDispatch_id())) {
             throw new ServiceException(BizExceptionEnum.REQUEST_NULL);
         }
-        Dispatch old = this.dispatchService.getById(dispatch.getDispatchId());
+        Dispatch old = this.dispatchService.getById(dispatch.getDispatch_id());
+        old.setDispatch_driver_id(dispatch.getDispatch_driver_id());
+        old.setDispatch_order_id(dispatch.getDispatch_order_id());
+        old.setDispatch_shop_id(dispatch.getDispatch_shop_id());
+        old.setDispatch_shop_type(dispatch.getDispatch_shop_type());
+        old.setDispatch_warehouse_id(dispatch.getDispatch_warehouse_id());
+        old.setDispatch_time(dispatch.getDispatch_time());
         this.dispatchService.updateById(old);
         return SUCCESS_TIP;
     }

@@ -6,6 +6,7 @@ import cn.stylefeng.guns.sys.core.exception.enums.BizExceptionEnum;
 import cn.stylefeng.guns.sys.core.log.LogObjectHolder;
 import cn.stylefeng.guns.sys.modular.system.entity.Warehouse;
 import cn.stylefeng.guns.sys.modular.system.service.WarehouseService;
+import cn.stylefeng.guns.sys.modular.system.warpper.NoticeWrapper;
 import cn.stylefeng.roses.core.base.controller.BaseController;
 import cn.stylefeng.roses.core.util.ToolUtil;
 import cn.stylefeng.roses.kernel.model.exception.ServiceException;
@@ -49,22 +50,15 @@ public class WarehouseController extends BaseController {
     public String warehouseUpdate(@PathVariable Long warehouseId, Model model) {
         Warehouse warehouse = this.warehouseService.getById(warehouseId);
         model.addAllAttributes(BeanUtil.beanToMap(warehouse));
-        LogObjectHolder.me().set(warehouse);
         return PREFIX + "warehouse_edit.html";
     }
 
     @RequestMapping("list")
-    //@Permission(Const.ADMIN_NAME)
     @ResponseBody
-    public Object list(){
-        //获取分页参数
-        Page page = LayuiPageFactory.defaultPage();
-
-        //根据条件查询日志
-        List<Map<String, Object>> result = warehouseService.getWarehouses(page);
-        page.setRecords(result);
-
-        return LayuiPageFactory.createPageInfo(page);
+    public Object list(String condition){
+        Page<Map<String, Object>> list = this.warehouseService.list(condition);
+        Page<Map<String, Object>> wrap = new NoticeWrapper(list).wrap();
+        return LayuiPageFactory.createPageInfo(wrap);
     }
 
     @RequestMapping(value = "add")
@@ -73,7 +67,7 @@ public class WarehouseController extends BaseController {
         if (ToolUtil.isOneEmpty(warehouse, warehouse.getWarehouseName())) {
             throw new ServiceException(BizExceptionEnum.REQUEST_NULL);
         }
-        this.warehouseService.saveWarehouse(warehouse);
+        this.warehouseService.save(warehouse);
         return SUCCESS_TIP;
     }
 

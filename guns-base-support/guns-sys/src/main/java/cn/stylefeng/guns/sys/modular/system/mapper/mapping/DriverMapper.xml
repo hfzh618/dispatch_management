@@ -23,6 +23,15 @@
         where 1 = 1
     </select>
 
+    <select id="list" resultType="map">
+        select
+        <include refid="Base_Column_List"></include>
+        from info_driver
+        <if test="condition != null and condition != ''">
+            where driver_name like CONCAT('%',#{condition},'%') or driver_id like CONCAT('%',#{condition},'%')
+        </if>
+    </select>
+
     <insert id="saveDriver" parameterType="cn.stylefeng.guns.sys.modular.system.entity.Driver" >
        insert into info_driver(driver_name, driver_tel, driver_status, driver_type) values(#{driverName},#{driverTel},#{driverStatus},#{driverType})
     </insert>

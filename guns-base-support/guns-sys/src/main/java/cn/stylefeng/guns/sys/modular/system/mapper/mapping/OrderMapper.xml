@@ -13,18 +13,27 @@
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        order_id AS "orderId", order_num AS "orderNum",  order_time AS "orderTime", order_product AS "orderProduct",order_shop AS "orderShop",
+        orderid AS "orderId",wave as "wave",drivingcarorder as "drivingcarorder",shopid as "shopid",shopname as "shopname",carown as "carown",shopstate as "shopstate",order_type as "order_type",package_type as "package_type",boxnum as "boxnum",volume as "volume",weight as "weight",start_address as "start_address",end_address as "end_address",start_time as "start_time",end_time as "end_time"
     </sql>
 
     <select id="getOrders" resultType="map" parameterType="com.baomidou.mybatisplus.extension.plugins.pagination.Page">
         select
-        <!--<include refid="Base_Column_List"/>-->
-        order_id AS "orderId", order_num AS "orderNum",  order_time AS "orderTime", order_product AS "orderProduct",order_shop AS "orderShop"
-        from info_order
+        <include refid="Base_Column_List"/>
+        from original_order_m
+        where 1 = 1
+    </select>
+
+    <select id="list" resultType="map">
+        select
+        <include refid="Base_Column_List"></include>
+        from original_order_m
+        <if test="condition != null and condition != ''">
+            where orderid like CONCAT('%',#{condition},'%') or shopname like CONCAT('%',#{condition},'%')
+        </if>
     </select>
 
     <insert id="saveOrder" parameterType="cn.stylefeng.guns.sys.modular.system.entity.Order" >
-       insert into info_order(order_num, order_product, order_shop, order_time) values(#{orderNum},#{orderProduct},#{orderShop},#{orderTime})
+       insert into original_order_m(order_num, order_product, order_shop, order_time) values(#{orderNum},#{orderProduct},#{orderShop},#{orderTime})
     </insert>
 
 

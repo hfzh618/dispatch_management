@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.stylefeng.guns.sys.modular.system.mapper.ParConfigMapper">
+
+    <!-- 通用查询结果列 -->
+    <!--<sql id="Base_Column_List">-->
+        <!--algo_id AS "algo",algo_name AS "algoName",algo_desc AS "algoDesc",-->
+    <!--</sql>-->
+
+    <select id="list" resultType="map">
+        select
+        *
+        from info_algo
+        <if test="condition != null and condition != ''">
+            where algo_name like CONCAT('%',#{condition},'%')
+        </if>
+    </select>
+
+    <!--<select id="getAlgo1" resultMap="cn.stylefeng.guns.sys.modular.system.entity.Algo1">-->
+        <!--select * from dynamic_train_conf limit 1-->
+    <!--</select>-->
+
+    <!--<select id="getAlgo2" resultMap="cn.stylefeng.guns.sys.modular.system.entity.Algo2">-->
+        <!--select * from dynamic_load_conf limit 1-->
+    <!--</select>-->
+
+    <!--<select id="getAlgo3" resultMap="cn.stylefeng.guns.sys.modular.system.entity.Algo3">-->
+        <!--select * from dynamic_pick_conf limit 1-->
+    <!--</select>-->
+
+    <insert id="saveCar" parameterType="cn.stylefeng.guns.sys.modular.system.entity.Car" >
+       insert into info_car(car_num, car_load, car_status, car_type) values(#{carNum},#{carLoad},#{carStatus},#{carType})
+    </insert>
+
+
+</mapper>

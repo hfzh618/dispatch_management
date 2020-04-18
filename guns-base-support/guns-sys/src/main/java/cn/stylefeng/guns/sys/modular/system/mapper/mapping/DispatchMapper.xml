@@ -3,22 +3,37 @@
 <mapper namespace="cn.stylefeng.guns.sys.modular.system.mapper.DispatchMapper">
 
     <!-- 通用查询映射结果 -->
-    <resultMap id="BaseResultMap" type="cn.stylefeng.guns.sys.modular.system.entity.Dispatch">
-        <id column="dispatch_id" property="dispatchId" />
-        <result column="dispatch_order_id" property="dispatchOrderId" />
-        <result column="dispatch_driver" property="dispatchDriver" />
-        <result column="dispatch_warehouse" property="dispatchWarehouse" />
-        <result column="dispatch_shop" property="dispatchShop" />
-        <result column="dispatch_time" property="dispatchTime" />
-    </resultMap>
+    <!--<resultMap id="BaseResultMap" type="cn.stylefeng.guns.sys.modular.system.entity.Dispatch">-->
+        <!--<id column="dispatch_id" property="dispatchId" />-->
+        <!--<result column="dispatch_order_id" property="dispatchOrderId" />-->
+        <!--<result column="dispatch_driver_id" property="dispatchDriverId" />-->
+        <!--<result column="dispatch_warehouse_id" property="dispatchWarehouseID" />-->
+        <!--<result column="dispatch_shop_id" property="dispatchShopId" />-->
+        <!--<result column="dispatch_shop_type" property="dispatchShopType" />-->
+        <!--<result column="dispatch_time" property="dispatchTime" />-->
+    <!--</resultMap>-->
+
+    <sql id="Base_Column_List">
+        dispatch_id AS "dispatchId", dispatch_order_id AS "dispatchOrderId",  dispatch_driver_id AS "dispatch_driver_id", dispatch_warehouse_id AS "dispatch_warehouse_id", dispatch_shop_id as "dispatch_shop_id",dispatch_shop_type AS "dispatch_shop_type",dispatch_time as "dispatch_time"
+    </sql>
 
 
-    <select id="getDispatchs" resultType="map" parameterType="com.baomidou.mybatisplus.extension.plugins.pagination.Page">
+    <!--<select id="getDispatchs" resultType="map" parameterType="com.baomidou.mybatisplus.extension.plugins.pagination.Page">-->
+        <!--select-->
+        <!--info_dispatch.dispatch_id,info_dispatch.dispatch_order_id,info_warehouse.warehouse_name as dispatch_warehouse,-->
+        <!--info_driver.driver_name as dispatch_driver,info_dispatch.dispatch_time,info_market.market_name as dispatch_shop-->
+        <!--from info_dispatch,info_warehouse,info_driver,info_market-->
+        <!--where <![CDATA[ info_dispatch.dispatch_id>100 and info_dispatch.dispatch_warehouse_id = info_warehouse.warehouse_id and info_dispatch.dispatch_driver_id = info_driver.driver_id and info_dispatch.dispatch_shop_id =  info_market.market_id]]>-->
+    <!--</select>-->
+
+    <select id="list" resultType="map">
         select
-        info_dispatch.dispatch_id,info_dispatch.dispatch_order_id,info_warehouse.warehouse_name as dispatch_warehouse,
-        info_driver.driver_name as dispatch_driver,info_dispatch.dispatch_time,info_market.market_name as dispatch_shop
-        from info_dispatch,info_warehouse,info_driver,info_market
-        where <![CDATA[ info_dispatch.dispatch_id>100 and info_dispatch.dispatch_warehouse_id = info_warehouse.warehouse_id and info_dispatch.dispatch_driver_id = info_driver.driver_id and info_dispatch.dispatch_shop_id =  info_market.market_id]]>
+        *
+        <!--<include refid="Base_Column_List"></include>-->
+        from info_dispatch
+        <if test="condition != null and condition != ''">
+            where dispatch_id like CONCAT('%',#{condition},'%')
+        </if>
     </select>
 
     <insert id="saveDispatch" parameterType="cn.stylefeng.guns.sys.modular.system.entity.Dispatch" >

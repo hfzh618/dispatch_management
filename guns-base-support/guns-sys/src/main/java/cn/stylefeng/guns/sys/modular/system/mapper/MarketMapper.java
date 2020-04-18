@@ -13,11 +13,5 @@ import java.util.Map;
  */
 public interface MarketMapper extends BaseMapper<Market> {
 
-    /**
-     * 查询车辆信息
-     * */
-
-    List<Map<String,Object>> getMarkets(@Param("page") Page page);
-
-    void saveMarket(Market car);
+    Page<Map<String, Object>> list(@Param("page") Page page, @Param("condition") String condition);
 }

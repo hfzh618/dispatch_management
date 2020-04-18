@@ -7,28 +7,45 @@
             <div class="layui-card-body">
                 <div class="layui-form-item layui-row">
                     <input name="roleId" type="hidden"/>
+
                     <div class="layui-inline layui-col-md12">
-                        <label class="layui-form-label">司机姓名<span style="color: red;">*</span></label>
+                        <label class="layui-form-label">调度单编号<span style="color: red;">*</span></label>
                         <div class="layui-input-block">
-                            <input name="dispatchDriver" placeholder="请输入司机姓名" type="text" class="layui-input" lay-verify="required" required/>
+                            <input name="dispatch_id" placeholder="请输入调度单编号" type="text" class="layui-input" lay-verify="required" required/>
+                        </div>
+                    </div>
+
+                    <div class="layui-inline layui-col-md12">
+                        <label class="layui-form-label">订单ID<span style="color: red;">*</span></label>
+                        <div class="layui-input-block">
+                            <input name="dispatch_order_id" placeholder="请输入订单ID" type="text" class="layui-input" lay-verify="required" required/>
+                        </div>
+                    </div>
+
+
+                    <div class="layui-inline layui-col-md12">
+                        <label class="layui-form-label">司机ID<span style="color: red;">*</span></label>
+                        <div class="layui-input-block">
+                            <input name="dispatch_driver_id" placeholder="请输入司机ID" type="text" class="layui-input" lay-verify="required" required/>
+                        </div>
+                    </div>
+
+                    <div class="layui-inline layui-col-md12">
+                        <label class="layui-form-label">仓库ID<span style="color: red;">*</span></label>
+                        <div class="layui-input-block">
+                            <input name="dispatch_warehouse_id" placeholder="请输入仓库ID" class="layui-input"></input>
                         </div>
                     </div>
                     <div class="layui-inline layui-col-md12">
-                        <label class="layui-form-label">仓库<span style="color: red;">*</span></label>
+                        <label class="layui-form-label">门店ID<span style="color: red;">*</span></label>
                         <div class="layui-input-block">
-                            <input name="dispatchWarehouse" placeholder="请输入仓库信息" class="layui-input"></input>
+                            <input name="dispatch_shop_id" placeholder="请输入门店ID" class="layui-input"></input>
                         </div>
                     </div>
                     <div class="layui-inline layui-col-md12">
-                        <label class="layui-form-label">门店信息<span style="color: red;">*</span></label>
+                        <label class="layui-form-label">门店类型<span style="color: red;">*</span></label>
                         <div class="layui-input-block">
-                            <input name="dispatchShop" placeholder="请输入门店信息" class="layui-input"></input>
-                        </div>
-                    </div>
-                    <div class="layui-inline layui-col-md12">
-                        <label class="layui-form-label">订单编号<span style="color: red;">*</span></label>
-                        <div class="layui-input-block">
-                            <input name="dispatchOrderId" placeholder="请输入订单编号" class="layui-input"></input>
+                            <input name="dispatch_shop_type" placeholder="请输入门店类型" class="layui-input"></input>
                         </div>
                     </div>
                 </div>

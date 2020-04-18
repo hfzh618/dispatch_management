@@ -6,6 +6,7 @@ import cn.stylefeng.guns.sys.core.exception.enums.BizExceptionEnum;
 import cn.stylefeng.guns.sys.core.log.LogObjectHolder;
 import cn.stylefeng.guns.sys.modular.system.entity.Market;
 import cn.stylefeng.guns.sys.modular.system.service.MarketService;
+import cn.stylefeng.guns.sys.modular.system.warpper.NoticeWrapper;
 import cn.stylefeng.roses.core.base.controller.BaseController;
 import cn.stylefeng.roses.core.util.ToolUtil;
 import cn.stylefeng.roses.kernel.model.exception.ServiceException;
@@ -49,22 +50,15 @@ public class MarketController extends BaseController {
     public String marketUpdate(@PathVariable Long marketId, Model model) {
         Market market = this.marketService.getById(marketId);
         model.addAllAttributes(BeanUtil.beanToMap(market));
-        LogObjectHolder.me().set(market);
         return PREFIX + "market_edit.html";
     }
 
     @RequestMapping("list")
-    //@Permission(Const.ADMIN_NAME)
     @ResponseBody
-    public Object list(){
-        //获取分页参数
-        Page page = LayuiPageFactory.defaultPage();
-
-        //根据条件查询日志
-        List<Map<String, Object>> result = marketService.getMarkets(page);
-        page.setRecords(result);
-
-        return LayuiPageFactory.createPageInfo(page);
+    public Object list(String condition){
+        Page<Map<String, Object>> list = this.marketService.list(condition);
+        Page<Map<String, Object>> wrap = new NoticeWrapper(list).wrap();
+        return LayuiPageFactory.createPageInfo(wrap);
     }
 
     @RequestMapping(value = "add")
@@ -73,7 +67,7 @@ public class MarketController extends BaseController {
         if (ToolUtil.isOneEmpty(market, market.getMarketName())) {
             throw new ServiceException(BizExceptionEnum.REQUEST_NULL);
         }
-        this.marketService.saveMarket(market);
+        this.marketService.save(market);
         return SUCCESS_TIP;
     }
 
@@ -97,6 +91,11 @@ public class MarketController extends BaseController {
         old.setMarketTel(market.getMarketTel());
         old.setMarketAddress(market.getMarketAddress());
         old.setMarketDistrict(market.getMarketDistrict());
+        old.setUpdown_starttime(market.getUpdown_starttime());
+        old.setUpdown_endtime(market.getUpdown_endtime());
+        old.setPermit_vehicle(market.getPermit_vehicle());
+        old.setMarket_type(market.getMarket_type());
+        old.setMarket_code(market.getMarket_code());
         this.marketService.updateById(old);
         return SUCCESS_TIP;
     }

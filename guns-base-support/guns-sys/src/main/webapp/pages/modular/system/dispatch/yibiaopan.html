@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>车辆状态</title>
+    <link rel="stylesheet" type="text/css" href="https://www.layuicdn.com/layui/css/layui.css" />
+    <script src="https://www.layuicdn.com/layui/layui.js"></script>
+    <script src="https://cdn.bootcss.com/echarts/4.7.0/echarts.min.js"></script>
+</head>
+<body>
+<!--<p name="vehicleid" value="${vehicleid}"></p>-->
+<div class="layui-inline layui-col-md12">
+    <label class="layui-form-label">车辆id<span style="color: red;">*</span></label>
+    <div class="layui-input-block">
+        <input name="vehicleid" id="vehicleid" value="${vehicleid}" type="text" class="layui-input" lay-verify="required" required/>
+    </div>
+</div>
+<div id="container"  style="height: 100vh;"></div>
+
+<script>
+
+    function get_volume_and_load() {
+
+        const xmlHttp = new XMLHttpRequest();
+        var URL = "http://10.141.209.225:5000/trace/view";
+        xmlHttp.open( "GET", URL, false );
+        xmlHttp.send( null );
+        const data = xmlHttp.responseText;
+        var res = JSON.parse(data);
+        return res;
+    }
+
+
+    function main(car_idx){
+        var dom = document.getElementById("container");
+        var myChart = echarts.init(dom);
+        option = {
+            tooltip: {
+                formatter: "{a} <br/>{c} {b}"
+            },
+            toolbox: {
+                show: true,
+                feature: {
+                    restore: {show: true},
+                    saveAsImage: {show: true}
+                }
+            },
+            series : [
+                {
+                    name: '站点ID',
+                    type: 'gauge',
+                    z: 3,
+                    min: 0,
+                    max: 20,
+                    splitNumber: 20,
+                    radius: '40%',
+                    axisLine: {            // 坐标轴线
+                        lineStyle: {       // 属性lineStyle控制线条样式
+                            width: 10
+                        }
+                    },
+                    axisTick: {            // 坐标轴小标记
+                        length: 15,        // 属性length控制线长
+                        lineStyle: {       // 属性lineStyle控制线条样式
+                            color: 'auto'
+                        }
+                    },
+                    splitLine: {           // 分隔线
+                        length: 20,         // 属性length控制线长
+                        lineStyle: {       // 属性lineStyle（详见lineStyle）控制线条样式
+                            color: 'auto'
+                        }
+                    },
+                    axisLabel: {
+                        backgroundColor: 'auto',
+                        borderRadius: 2,
+                        color: '#eee',
+                        padding: 3,
+                        textShadowBlur: 2,
+                        textShadowOffsetX: 1,
+                        textShadowOffsetY: 1,
+                        textShadowColor: '#222'
+                    },
+                    title: {
+                        // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+                        fontWeight: 'bolder',
+                        fontSize: 20,
+                        fontStyle: 'italic'
+                    },
+                    detail: {
+                        // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+                        // formatter: function (value) {
+                        //     value = (value + '').split('.');
+                        //     value.length < 2 && (value.push('00'));
+                        //     return ('00' + value[0]).slice(-2)
+                        //         + '.' + (value[1] + '00').slice(0, 2);
+                        // },
+                        fontWeight: 'bolder',
+                        borderRadius: 3,
+                        backgroundColor: '#444',
+                        borderColor: '#aaa',
+                        shadowBlur: 5,
+                        shadowColor: '#333',
+                        shadowOffsetX: 0,
+                        shadowOffsetY: 3,
+                        borderWidth: 2,
+                        textBorderColor: '#000',
+                        textBorderWidth: 2,
+                        textShadowBlur: 2,
+                        textShadowColor: '#fff',
+                        textShadowOffsetX: 0,
+                        textShadowOffsetY: 0,
+                        fontFamily: 'Arial',
+                        width: 100,
+                        color: '#eee',
+                        rich: {}
+                    },
+                    data: [{value: 40, name: '站点ID'}]
+                },
+                {
+                    name: '载重',
+                    type: 'gauge',
+                    center: ['20%', '55%'],    // 默认全局居中
+                    radius: '45%',
+                    min: 0,
+                    max: 15000,
+                    startAngle:165,
+                    endAngle: 15,
+                    splitNumber: 5,
+                    axisLine: {            // 坐标轴线
+                        lineStyle: {       // 属性lineStyle控制线条样式
+                            width: 8
+                        }
+                    },
+                    axisTick: {            // 坐标轴小标记
+                        length: 12,        // 属性length控制线长
+                        lineStyle: {       // 属性lineStyle控制线条样式
+                            color: 'auto'
+                        }
+                    },
+                    splitLine: {           // 分隔线
+                        length: 20,         // 属性length控制线长
+                        lineStyle: {       // 属性lineStyle（详见lineStyle）控制线条样式
+                            color: 'auto'
+                        }
+                    },
+                    pointer: {
+                        width: 5
+                    },
+                    title: {
+                        offsetCenter: [0, '-30%'],       // x, y，单位px
+                    },
+                    detail: {
+                        // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+                        fontWeight: 'bolder'
+                    },
+                    data: [{value: 1.5, name: '载重(kg)'}]
+                },
+                {
+                    name: '容积',
+                    type: 'gauge',
+                    center: ['77%', '55%'],    // 默认全局居中
+                    radius: '45%',
+                    min: 0,
+                    max: 40,
+                    startAngle:165,
+                    endAngle: 15,
+                    splitNumber: 5,
+                    axisLine: {            // 坐标轴线
+                        lineStyle: {       // 属性lineStyle控制线条样式
+                            width: 8
+                        }
+                    },
+                    axisTick: {            // 坐标轴小标记
+                        length: 12,        // 属性length控制线长
+                        lineStyle: {       // 属性lineStyle控制线条样式
+                            color: 'auto'
+                        }
+                    },
+                    splitLine: {           // 分隔线
+                        length: 20,         // 属性length控制线长
+                        lineStyle: {       // 属性lineStyle（详见lineStyle）控制线条样式
+                            color: 'auto'
+                        }
+                    },
+                    pointer: {
+                        width: 5
+                    },
+                    title: {
+                        offsetCenter: [0, '-30%'],       // x, y，单位px
+                    },
+                    detail: {
+                        // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+                        fontWeight: 'bolder'
+                    },
+                    data: [{value: 1.5, name: '容积(L)'}]
+                }
+            ]
+        };
+
+
+        var data = get_volume_and_load();
+        var car = data.data[car_idx];
+        var car_load = car.load;
+        var car_volume = car.volume;
+        var car_last_shop = car.last_shop;
+        console.log("car_idx");
+        console.log(car_idx);
+        console.log("car_load");
+        console.log(car_load);
+        console.log("car_volume");
+        console.log(car_volume);
+        console.log("car_last_shop");
+        console.log(car_last_shop);
+
+        var idx = 0;
+        setInterval(function (){
+            if (idx < car_last_shop.length){
+                option.series[1].data[0].value = car_load[idx];   //设置载重
+                option.series[0].data[0].value = car_last_shop[idx];
+                option.series[2].data[0].value = car_volume[idx];
+                idx++;
+                myChart.setOption(option,true);
+            }
+        },2000);
+    }
+    var id = document.getElementById("vehicleid").value;
+    console.log("id");
+    console.log(id);
+    main(id);
+
+</script>
+</body>
+</html>

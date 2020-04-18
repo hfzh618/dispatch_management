@@ -1,5 +1,6 @@
 package cn.stylefeng.guns.sys.modular.system.service;
 
+import cn.stylefeng.guns.base.pojo.page.LayuiPageFactory;
 import cn.stylefeng.guns.sys.modular.system.entity.Dispatch;
 import cn.stylefeng.guns.sys.modular.system.mapper.DispatchMapper;
 import com.alibaba.fastjson.JSONArray;
@@ -31,25 +32,12 @@ import java.util.Map;
 @Service
 public class DispatchService extends ServiceImpl<DispatchMapper, Dispatch> {
 
-    /**
-     * 获取登录日志列表
-     *
-     * @author fengshuonan
-     * @Date 2018/12/23 5:53 PM
-     */
-    public List<Map<String, Object>> getDispatchs(Page page) {
-        return this.baseMapper.getDispatchs(page);
+    public Page<Map<String, Object>> list(String condition) {
+        Page page = LayuiPageFactory.defaultPage();
+        return this.baseMapper.list(page, condition);
     }
 
-    public void saveDispatch(Dispatch dispatch){
-        this.baseMapper.saveDispatch(dispatch);
-    }
-
-    public void analysis(int orderId,int carId){
-
-    }
-
-    public static void generate(){
+    public  void generate(){
 
         JSONObject input = new JSONObject();
         JSONObject vehicle = new JSONObject();
@@ -114,7 +102,4 @@ public class DispatchService extends ServiceImpl<DispatchMapper, Dispatch> {
     }
 
 
-    public static void main(String[] args) {
-        generate();
-    }
 }

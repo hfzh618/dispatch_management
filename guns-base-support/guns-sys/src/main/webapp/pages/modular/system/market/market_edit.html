@@ -1,0 +1,85 @@
+@layout("/common/_form.html",{js:["/assets/modular/system/market/market_edit.js"]}){
+
+<form class="layui-form" id="noticeForm" lay-filter="noticeForm">
+    <div class="layui-fluid" style="padding-bottom: 75px;">
+        <div class="layui-card">
+            <div class="layui-card-header">基本信息</div>
+            <div class="layui-card-body">
+                <div class="layui-form-item layui-row">
+                    <input name="marketId" value="${marketId}" type="hidden"/>
+
+                    <div class="layui-inline layui-col-md12">
+                        <label class="layui-form-label">门店编码<span style="color: red;">*</span></label>
+                        <div class="layui-input-block">
+                            <input name="market_code" value="${market_code}" placeholder="请输入门店编码" type="text" class="layui-input" lay-verify="required" required/>
+                        </div>
+                    </div>
+
+                    <div class="layui-inline layui-col-md12">
+                        <label class="layui-form-label">名称<span style="color: red;">*</span></label>
+                        <div class="layui-input-block">
+                            <input name="marketName" value="${marketName}" placeholder="请输入名称" type="text" class="layui-input" lay-verify="required" required/>
+                        </div>
+                    </div>
+
+                    <div class="layui-inline layui-col-md12">
+                        <label class="layui-form-label">门店区域<span style="color: red;">*</span></label>
+                        <div class="layui-input-block">
+                            <input name="marketDistrict" value="${marketDistrict}" placeholder="请输入门店区域" type="text" class="layui-input" lay-verify="required" required/>
+                        </div>
+                    </div>
+
+                    <div class="layui-inline layui-col-md12">
+                        <label class="layui-form-label">电话<span style="color: red;">*</span></label>
+                        <div class="layui-input-block">
+                            <input name="marketTel" value="${marketTel}" placeholder="请输入电话" type="text" class="layui-input" lay-verify="required" required/>
+                        </div>
+                    </div>
+
+                    <div class="layui-inline layui-col-md12">
+                        <label class="layui-form-label">门店地址<span style="color: red;">*</span></label>
+                        <div class="layui-input-block">
+                            <input name="marketAddress" value="${marketAddress}" placeholder="请输入门店地址" type="text" class="layui-input" lay-verify="required" required/>
+                        </div>
+                    </div>
+
+                    <div class="layui-inline layui-col-md12">
+                        <label class="layui-form-label">门店业态<span style="color: red;">*</span></label>
+                        <div class="layui-input-block">
+                            <input name="market_type" value="${market_type}" placeholder="请输入门店业态" type="text" class="layui-input" lay-verify="required" required/>
+                        </div>
+                    </div>
+
+                    <div class="layui-inline layui-col-md12">
+                        <label class="layui-form-label">许可车型<span style="color: red;">*</span></label>
+                        <div class="layui-input-block">
+                            <input name="permit_vehicle" value="${permit_vehicle}" placeholder="请输入许可车型" type="text" class="layui-input" lay-verify="required" required/>
+                        </div>
+                    </div>
+
+                    <div class="layui-inline layui-col-md12">
+                        <label class="layui-form-label">上下货开始时间<span style="color: red;">*</span></label>
+                        <div class="layui-input-block">
+                            <input name="updown_starttime" value="${updown_starttime}" placeholder="请输入上下货开始时间" type="text" class="layui-input" lay-verify="required" required/>
+                        </div>
+                    </div>
+
+                    <div class="layui-inline layui-col-md12">
+                        <label class="layui-form-label">上下货结束时间<span style="color: red;">*</span></label>
+                        <div class="layui-input-block">
+                            <input name="updown_endtime" value="${updown_endtime}" placeholder="请输入上下货结束时间" type="text" class="layui-input" lay-verify="required" required/>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group-bottom text-center">
+        <button class="layui-btn" lay-filter="btnSubmit" lay-submit>&emsp;提交&emsp;</button>
+        <button type="reset" class="layui-btn layui-btn-primary" ew-event="closeDialog">&emsp;取消&emsp;</button>
+    </div>
+</form>
+
+@}

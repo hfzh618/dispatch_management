@@ -15,35 +15,58 @@ public class Car implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    /**
-     * 主键
-     */
     @TableId(value = "car_id", type = IdType.ID_WORKER)
     private Long carId;
 
-    /**
-     * 车牌号码
-     */
     @TableField("car_num")
     private String carNum;
 
-    /**
-     * 汽车容量
-     */
     @TableField("car_load")
     private Long carLoad;
 
-    /**
-     * 汽车状态
-     */
     @TableField("car_status")
     private String carStatus;
 
-    /**
-     * 汽车类型
-     */
     @TableField("car_type")
     private String carType;
+
+    @TableField("carrier_code")
+    private String carrier_code;
+
+    @TableField("carrier_name")
+    private String carrier_name;
+
+    @TableField("avaliable_num")
+    private int avaliable_num;
+
+    @TableField("rated_load")
+    private String rated_load;
+
+    @TableField("rated_volume")
+    private Double rated_volume;
+
+    @TableField("car_speed")
+    private Double car_speed;
+
+    @TableField("volume")
+    private String volume;
+
+    @TableField("permit_type")
+    private String permit_type;
+
+    @TableField("start_cost")
+    private Double start_cost;
+
+    @TableField("park_cost")
+    private Double park_cost;
+
+    @TableField("perkm_cost")
+    private Double perkm_cost;
+
+
+
+
+
 
 
     public static long getSerialVersionUID() {

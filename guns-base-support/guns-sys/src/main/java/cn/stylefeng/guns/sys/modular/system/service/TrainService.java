@@ -1,5 +1,6 @@
 package cn.stylefeng.guns.sys.modular.system.service;
 
+import cn.stylefeng.guns.base.pojo.page.LayuiPageFactory;
 import cn.stylefeng.guns.sys.modular.system.entity.Train;
 import cn.stylefeng.guns.sys.modular.system.mapper.TrainMapper;
 import com.alibaba.fastjson.JSONArray;
@@ -44,58 +45,55 @@ public class TrainService extends ServiceImpl<TrainMapper, Train> {
     public static Map<Integer,Double> lng = new HashMap<>();
     public static Map<Integer,Double> lat = new HashMap<>();
 
-    public List<Map<String, Object>> getTrains(Page page) {
-        return this.baseMapper.getTrains(page);
+    public Page<Map<String, Object>> list(String condition) {
+        Page page = LayuiPageFactory.defaultPage();
+        return this.baseMapper.list(page, condition);
     }
 
-    public void saveTrain(Train train){
-        this.baseMapper.saveTrain(train);
-    }
-
-    public void generate() throws IOException {
-        CloseableHttpClient httpClient = HttpClients.createDefault();
-
-        HttpGet request = new HttpGet("http://10.141.209.224:5001/routes");
-        try (CloseableHttpResponse response = httpClient.execute(request)) {
-
-            HttpEntity entity = response.getEntity();
-
-            if (entity != null) {
-                String result = EntityUtils.toString(entity);
-
-                JSONObject json;
-                json = JSONObject.parseObject(result);
-                JSONArray data =  json.getJSONArray("data");
-                for (int i = 0;i<data.size();i++){
-                    JSONObject obj = data.getJSONObject(i);
-                    String key = obj.keySet().toArray()[0].toString();
-                    String value = obj.get(key).toString();
-                    System.out.println("key"+key);
-                    System.out.println("value"+value);
-
-                    //得到经纬度序列
-                    value = value.substring(1,value.length()-1);
-                    String[] items = value.split(",");
-                    List<List<Double>> lnglats = new ArrayList<>();
-                    for (String item:items){
-                        Double longitude = lng.get(Integer.valueOf(item));
-                        Double latitude = lat.get(Integer.valueOf(item));
-                        List<Double> lnglat = new ArrayList<>();
-                        lnglat.add(longitude);
-                        lnglat.add(latitude);
-                        lnglats.add(lnglat);
-                    }
-                    System.out.println(lnglats.toString());
-                    Train train = new Train();
-                    train.setTrainName(key);
-                    train.setTrainStops(value);
-                    train.setTrainType("常规");
-                    train.setTrainStatus("初始");
-                    this.baseMapper.saveTrain(train);
-                }
-            }
-        }
-    }
+//    public void generate() throws IOException {
+//        CloseableHttpClient httpClient = HttpClients.createDefault();
+//
+//        HttpGet request = new HttpGet("http://10.141.209.224:5001/routes");
+//        try (CloseableHttpResponse response = httpClient.execute(request)) {
+//
+//            HttpEntity entity = response.getEntity();
+//
+//            if (entity != null) {
+//                String result = EntityUtils.toString(entity);
+//
+//                JSONObject json;
+//                json = JSONObject.parseObject(result);
+//                JSONArray data =  json.getJSONArray("data");
+//                for (int i = 0;i<data.size();i++){
+//                    JSONObject obj = data.getJSONObject(i);
+//                    String key = obj.keySet().toArray()[0].toString();
+//                    String value = obj.get(key).toString();
+//                    System.out.println("key"+key);
+//                    System.out.println("value"+value);
+//
+//                    //得到经纬度序列
+//                    value = value.substring(1,value.length()-1);
+//                    String[] items = value.split(",");
+//                    List<List<Double>> lnglats = new ArrayList<>();
+//                    for (String item:items){
+//                        Double longitude = lng.get(Integer.valueOf(item));
+//                        Double latitude = lat.get(Integer.valueOf(item));
+//                        List<Double> lnglat = new ArrayList<>();
+//                        lnglat.add(longitude);
+//                        lnglat.add(latitude);
+//                        lnglats.add(lnglat);
+//                    }
+//                    System.out.println(lnglats.toString());
+//                    Train train = new Train();
+//                    train.setTrainName(key);
+//                    train.setTrainStops(value);
+//                    train.setTrainType("常规");
+//                    train.setTrainStatus("初始");
+//                    this.baseMapper.save(train);
+//                }
+//            }
+//        }
+//    }
 
     public static void banlieData() throws Exception{
         String file = "/Users/hufangzhou/Desktop/mendian.csv";

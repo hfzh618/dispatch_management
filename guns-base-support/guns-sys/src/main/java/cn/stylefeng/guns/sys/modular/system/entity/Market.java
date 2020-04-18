@@ -17,31 +17,36 @@ public class Market implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    /**
-     * 主键
-     */
+
     @TableId(value = "market_id", type = IdType.ID_WORKER)
     private Long marketId;
 
-    /**
-     * 车牌号码
-     */
     @TableField("market_name")
     private String marketName;
+
+    @TableField("market_code")
+    private String market_code;
+
+    @TableField("market_type")
+    private String market_type;
+
+    @TableField("updown_endtime")
+    private String updown_endtime;
+
+    @TableField("updown_starttime")
+    private String updown_starttime;
+
+    @TableField("permit_vehicle")
+    private String permit_vehicle;
 
     @TableField("market_tel")
     private String marketTel;
 
-    /**
-     * 汽车容量
-     */
     @TableField("market_district")
     private String marketDistrict;
 
-
     @TableField("market_address")
     private String marketAddress;
-
 
 
     public static long getSerialVersionUID() {

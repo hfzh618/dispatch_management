@@ -13,11 +13,7 @@ import java.util.Map;
  */
 public interface CarMapper extends BaseMapper<Car> {
 
-    /**
-     * 查询车辆信息
-     * */
 
-    List<Map<String,Object>> getCars(@Param("page") Page page);
+    Page<Map<String, Object>> list(@Param("page") Page page, @Param("condition") String condition);
 
-    void saveCar(Car car);
 }

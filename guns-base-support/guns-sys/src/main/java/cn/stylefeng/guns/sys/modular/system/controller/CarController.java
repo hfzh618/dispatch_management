@@ -6,6 +6,7 @@ import cn.stylefeng.guns.sys.core.exception.enums.BizExceptionEnum;
 import cn.stylefeng.guns.sys.core.log.LogObjectHolder;
 import cn.stylefeng.guns.sys.modular.system.entity.Car;
 import cn.stylefeng.guns.sys.modular.system.service.CarService;
+import cn.stylefeng.guns.sys.modular.system.warpper.NoticeWrapper;
 import cn.stylefeng.roses.core.base.controller.BaseController;
 import cn.stylefeng.roses.core.util.ToolUtil;
 import cn.stylefeng.roses.kernel.model.exception.ServiceException;
@@ -36,7 +37,7 @@ public class CarController extends BaseController {
 
     @RequestMapping("")
     public String index(){
-        return PREFIX + "car.html";
+        return PREFIX + "car2.html";
     }
 
 
@@ -49,22 +50,15 @@ public class CarController extends BaseController {
     public String carUpdate(@PathVariable Long carId, Model model) {
         Car car = this.carService.getById(carId);
         model.addAllAttributes(BeanUtil.beanToMap(car));
-        LogObjectHolder.me().set(car);
         return PREFIX + "car_edit.html";
     }
 
     @RequestMapping("list")
-    //@Permission(Const.ADMIN_NAME)
     @ResponseBody
-    public Object list(){
-        //获取分页参数
-        Page page = LayuiPageFactory.defaultPage();
-
-        //根据条件查询日志
-        List<Map<String, Object>> result = carService.getCars(page);
-        page.setRecords(result);
-
-        return LayuiPageFactory.createPageInfo(page);
+    public Object list(String condition){
+        Page<Map<String, Object>> list = this.carService.list(condition);
+        Page<Map<String, Object>> wrap = new NoticeWrapper(list).wrap();
+        return LayuiPageFactory.createPageInfo(wrap);
     }
 
     @RequestMapping(value = "add")
@@ -73,7 +67,7 @@ public class CarController extends BaseController {
         if (ToolUtil.isOneEmpty(car, car.getCarNum())) {
             throw new ServiceException(BizExceptionEnum.REQUEST_NULL);
         }
-        this.carService.saveCar(car);
+        this.carService.save(car);
         return SUCCESS_TIP;
     }
 
@@ -94,9 +88,19 @@ public class CarController extends BaseController {
         }
         Car old = this.carService.getById(car.getCarId());
         old.setCarNum(car.getCarNum());
-        old.setCarLoad(car.getCarLoad());
         old.setCarStatus(car.getCarStatus());
         old.setCarType(car.getCarType());
+        old.setAvaliable_num(car.getAvaliable_num());
+        old.setCar_speed(car.getCar_speed());
+        old.setVolume(car.getVolume());
+        old.setStart_cost(car.getStart_cost());
+        old.setRated_volume(car.getRated_volume());
+        old.setRated_load(car.getRated_load());
+        old.setPermit_type(car.getPermit_type());
+        old.setPerkm_cost(car.getPerkm_cost());
+        old.setPark_cost(car.getPark_cost());
+        old.setCarrier_name(car.getCarrier_name());
+        old.setCarrier_code(car.getCarrier_code());
         this.carService.updateById(old);
         return SUCCESS_TIP;
     }

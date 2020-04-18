@@ -7,46 +7,68 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
 import java.io.Serializable;
+import java.sql.Struct;
+import java.util.Date;
 
 /**
  * Created by hufangzhou on 2020/1/7.
  */
 @Data
-@TableName("info_order")
+@TableName("original_order_m")
 public class Order implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    /**
-     * 主键
-     */
-    @TableId(value = "order_id", type = IdType.ID_WORKER)
+    @TableId(value = "orderid", type = IdType.ID_WORKER)
     private int orderId;
 
-    /**
-     * 车牌号码
-     */
-    @TableField("order_num")
-    private int orderNum;
+//    @TableField("deliverydate")
+//    private Date deliverydate;
 
-    /**
-     * 汽车容量
-     */
-    @TableField("order_product")
-    private String orderProduct;
+    @TableField("wave")
+    private String wave;
 
-    /**
-     * 汽车状态
-     */
-    @TableField("order_shop")
-    private String orderShop;
+    @TableField("drivingcarorder")
+    private String drivingcarorder;
 
-    /**
-     * 汽车类型
-     */
-    @TableField("order_time")
-    private String orderTime;
+    @TableField("shopid")
+    private String shopid;
 
+    @TableField("shopname")
+    private String shopname;
+
+    @TableField("carown")
+    private String carown;
+
+    @TableField("shopstate")
+    private String shopstate;
+
+    @TableField("order_type")
+    private String order_type;
+
+    @TableField("package_type")
+    private String package_type;
+
+    @TableField("boxnum")
+    private int boxnum;
+
+    @TableField("volume")
+    private Double volume;
+
+    @TableField("weight")
+    private Double weight;
+
+    @TableField("start_address")
+    private String start_address;
+
+    @TableField("end_address")
+    private String end_address;
+
+    @TableField("start_time")
+    private String start_time;
+
+    @TableField("end_time")
+    private String end_time;
 
     public static long getSerialVersionUID() {
         return serialVersionUID;

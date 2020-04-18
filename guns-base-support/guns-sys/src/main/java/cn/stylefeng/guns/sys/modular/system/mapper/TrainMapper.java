@@ -13,11 +13,5 @@ import java.util.Map;
  */
 public interface TrainMapper extends BaseMapper<Train> {
 
-    /**
-     * 查询车辆信息
-     * */
-
-    List<Map<String,Object>> getTrains(@Param("page") Page page);
-
-    void saveTrain(Train train);
+    Page<Map<String, Object>> list(@Param("page") Page page, @Param("condition") String condition);
 }

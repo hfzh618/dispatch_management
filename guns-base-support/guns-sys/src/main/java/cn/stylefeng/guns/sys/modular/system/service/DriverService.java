@@ -1,5 +1,6 @@
 package cn.stylefeng.guns.sys.modular.system.service;
 
+import cn.stylefeng.guns.base.pojo.page.LayuiPageFactory;
 import cn.stylefeng.guns.sys.modular.system.entity.Car;
 import cn.stylefeng.guns.sys.modular.system.entity.Driver;
 import cn.stylefeng.guns.sys.modular.system.mapper.CarMapper;
@@ -28,11 +29,9 @@ public class DriverService extends ServiceImpl<DriverMapper, Driver> {
      * @author fengshuonan
      * @Date 2018/12/23 5:53 PM
      */
-    public List<Map<String, Object>> getDrivers(Page page) {
-        return this.baseMapper.getDrivers(page);
-    }
 
-    public void saveDriver(Driver driver){
-        this.baseMapper.saveDriver(driver);
+    public Page<Map<String, Object>> list(String condition) {
+        Page page = LayuiPageFactory.defaultPage();
+        return this.baseMapper.list(page, condition);
     }
 }

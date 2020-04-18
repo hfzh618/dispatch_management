@@ -7,6 +7,22 @@
             <div class="layui-card-body">
                 <div class="layui-form-item layui-row">
                     <input name="roleId" type="hidden"/>
+
+                    <div class="layui-inline layui-col-md12">
+                        <label class="layui-form-label">门店ID<span style="color: red;">*</span></label>
+                        <div class="layui-input-block">
+                            <input name="marketId" placeholder="请输入门店ID" type="text" class="layui-input" lay-verify="required" required/>
+                        </div>
+                    </div>
+
+                    <div class="layui-inline layui-col-md12">
+                        <label class="layui-form-label">门店编码<span style="color: red;">*</span></label>
+                        <div class="layui-input-block">
+                            <input name="market_code" placeholder="请输入门店编码" type="text" class="layui-input" lay-verify="required" required/>
+                        </div>
+                    </div>
+
+
                     <div class="layui-inline layui-col-md12">
                         <label class="layui-form-label">门店名称<span style="color: red;">*</span></label>
                         <div class="layui-input-block">
@@ -31,6 +47,33 @@
                             <input name="marketAddress" placeholder="请输入门店地址" class="layui-input"></input>
                         </div>
                     </div>
+
+                    <div class="layui-inline layui-col-md12">
+                        <label class="layui-form-label">许可车型<span style="color: red;">*</span></label>
+                        <div class="layui-input-block">
+                            <input name="permit_vehicle" placeholder="请输入许可车型" class="layui-input"></input>
+                        </div>
+                    </div>
+                    <div class="layui-inline layui-col-md12">
+                        <label class="layui-form-label">业态<span style="color: red;">*</span></label>
+                        <div class="layui-input-block">
+                            <input name="market_type" placeholder="请输入门店业态" class="layui-input"></input>
+                        </div>
+                    </div>
+                    <div class="layui-inline layui-col-md12">
+                        <label class="layui-form-label">上下货开始时间<span style="color: red;">*</span></label>
+                        <div class="layui-input-block">
+                            <input name="updown_starttime" placeholder="请输入上下货开始时间" class="layui-input"></input>
+                        </div>
+                    </div>
+                    <div class="layui-inline layui-col-md12">
+                        <label class="layui-form-label">上下货结束时间<span style="color: red;">*</span></label>
+                        <div class="layui-input-block">
+                            <input name="updown_endtime" placeholder="请输入上下货结束时间" class="layui-input"></input>
+                        </div>
+                    </div>
+
+
                 </div>
             </div>
         </div>

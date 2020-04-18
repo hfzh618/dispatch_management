@@ -24,6 +24,15 @@
         where 1 = 1
     </select>
 
+    <select id="list" resultType="map">
+        select
+        <include refid="Base_Column_List"></include>
+        from info_warehouse
+        <if test="condition != null and condition != ''">
+            where warehouse_name like CONCAT('%',#{condition},'%') or warehouse_id like CONCAT('%',#{condition},'%')
+        </if>
+    </select>
+
     <insert id="saveWarehouse" parameterType="cn.stylefeng.guns.sys.modular.system.entity.Warehouse" >
        insert into info_warehouse(warehouse_name, warehouse_district,warehouse_area,warehouse_location, warehouse_type) values(#{warehouseName},#{warehouseDistrict},#{warehouseArea},#{warehouseLocation},#{warehouseType})
     </insert>

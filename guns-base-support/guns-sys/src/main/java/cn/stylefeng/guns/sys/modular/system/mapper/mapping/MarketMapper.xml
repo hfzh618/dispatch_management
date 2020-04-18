@@ -13,7 +13,7 @@
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        market_id AS "marketId", market_name AS "marketName",  market_district AS "marketDistrict", market_tel as "marketTel",market_address as "marketAddress"
+        market_id AS "marketId", market_name AS "marketName",  market_district AS "marketDistrict", market_tel as "marketTel",market_address as "marketAddress",market_code as "market_code",updown_starttime as "updown_starttime",updown_endtime as "updown_endtime",permit_vehicle as "permit_vehicle",market_type as "market_type"
     </sql>
 
     <select id="getMarkets" resultType="map" parameterType="com.baomidou.mybatisplus.extension.plugins.pagination.Page">
@@ -21,6 +21,15 @@
         <include refid="Base_Column_List"/>
         from info_market
         where 1 = 1
+    </select>
+
+    <select id="list" resultType="map">
+        select
+        <include refid="Base_Column_List"></include>
+        from info_market
+        <if test="condition != null and condition != ''">
+            where market_name like CONCAT('%',#{condition},'%') or market_code like CONCAT('%',#{condition},'%')
+        </if>
     </select>
 
     <insert id="saveMarket" parameterType="cn.stylefeng.guns.sys.modular.system.entity.Market" >

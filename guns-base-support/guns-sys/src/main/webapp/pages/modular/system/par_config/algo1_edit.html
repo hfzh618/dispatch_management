@@ -1,0 +1,75 @@
+@layout("/common/_form.html",{js:["/assets/modular/system/par_config/algo2.js"]}){
+
+<form class="layui-form" id="noticeForm" lay-filter="noticeForm">
+    <div class="layui-fluid" style="padding-bottom: 75px;">
+        <div class="layui-card">
+            <div class="layui-card-header">基本信息</div>
+            <div class="layui-card-body">
+                <div class="layui-form-item layui-row">
+                    <div class="layui-inline layui-col-md12">
+                        <label class="layui-form-label">cross_rate<span style="color: red;">*</span></label>
+                        <div class="layui-input-block">
+                            <input name="alpha" value="0.9" placeholder="请输入cross_rate" type="text" class="layui-input" lay-verify="required" required/>
+                        </div>
+                    </div>
+
+                    <div class="layui-inline layui-col-md12">
+                        <label class="layui-form-label">variation_rate<span style="color: red;">*</span></label>
+                        <div class="layui-input-block">
+                            <input name="variation_rate" value="0.09" placeholder="请输入variation_rate" type="text" class="layui-input" lay-verify="required" required/>
+                        </div>
+                    </div>
+
+                    <div class="layui-inline layui-col-md12">
+                        <label class="layui-form-label">per_volume<span style="color: red;">*</span></label>
+                        <div class="layui-input-block">
+                            <input name="swap_count" value="5" placeholder="请输入swap_count" type="text" class="layui-input" lay-verify="required" required/>
+                        </div>
+                    </div>
+
+                    <div class="layui-inline layui-col-md12">
+                        <label class="layui-form-label">climb_epoch<span style="color: red;">*</span></label>
+                        <div class="layui-input-block">
+                            <input name="climb_epoch" value="20" placeholder="请输入climb_epoch" type="text" class="layui-input" lay-verify="required" required/>
+                        </div>
+                    </div>
+
+                    <div class="layui-inline layui-col-md12">
+                        <label class="layui-form-label">rank_count<span style="color: red;">*</span></label>
+                        <div class="layui-input-block">
+                            <input name="rank_count" value="20" placeholder="请输入rank_count" type="text" class="layui-input" lay-verify="required" required/>
+                        </div>
+                    </div>
+
+                    <div class="layui-inline layui-col-md12">
+                        <label class="layui-form-label">epoch<span style="color: red;">*</span></label>
+                        <div class="layui-input-block">
+                            <input name="epoch" value="25" placeholder="请输入epoch" type="text" class="layui-input" lay-verify="required" required/>
+                        </div>
+                    </div>
+
+                    <div class="layui-inline layui-col-md12">
+                        <label class="layui-form-label">penalty<span style="color: red;">*</span></label>
+                        <div class="layui-input-block">
+                            <input name="penalty" value="100" placeholder="请输入penalty" type="text" class="layui-input" lay-verify="required" required/>
+                        </div>
+                    </div>
+
+                    <div class="layui-inline layui-col-md12">
+                        <label class="layui-form-label">load_rate<span style="color: red;">*</span></label>
+                        <div class="layui-input-block">
+                            <input name="load_rate" value="100" placeholder="请输入load_rate" type="text" class="layui-input" lay-verify="required" required/>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group-bottom text-center">
+        <button class="layui-btn" lay-filter="btnSubmit" lay-submit>&emsp;提交&emsp;</button>
+        <button type="reset" class="layui-btn layui-btn-primary" ew-event="closeDialog">&emsp;取消&emsp;</button>
+    </div>
+</form>
+
+@}

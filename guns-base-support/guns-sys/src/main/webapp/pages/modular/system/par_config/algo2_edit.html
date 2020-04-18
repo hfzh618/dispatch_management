@@ -1,0 +1,55 @@
+@layout("/common/_form.html",{js:["/assets/modular/system/par_config/algo2.js"]}){
+
+<form class="layui-form" id="noticeForm" lay-filter="noticeForm">
+    <div class="layui-fluid" style="padding-bottom: 75px;">
+        <div class="layui-card">
+            <div class="layui-card-header">基本信息</div>
+            <div class="layui-card-body">
+                <div class="layui-form-item layui-row">
+                    <div class="layui-inline layui-col-md12">
+                        <label class="layui-form-label">alpha<span style="color: red;">*</span></label>
+                        <div class="layui-input-block">
+                            <input name="alpha" value="0.5" placeholder="请输入alpha" type="text" class="layui-input" lay-verify="required" required/>
+                        </div>
+                    </div>
+
+                    <div class="layui-inline layui-col-md12">
+                        <label class="layui-form-label">per_load<span style="color: red;">*</span></label>
+                        <div class="layui-input-block">
+                            <input name="per_load" value="0.9" placeholder="请输入per_load" type="text" class="layui-input" lay-verify="required" required/>
+                        </div>
+                    </div>
+
+                    <div class="layui-inline layui-col-md12">
+                        <label class="layui-form-label">per_volume<span style="color: red;">*</span></label>
+                        <div class="layui-input-block">
+                            <input name="per_volume" value="0.9" placeholder="请输入per_volume" type="text" class="layui-input" lay-verify="required" required/>
+                        </div>
+                    </div>
+
+                    <div class="layui-inline layui-col-md12">
+                        <label class="layui-form-label">e<span style="color: red;">*</span></label>
+                        <div class="layui-input-block">
+                            <input name="e" value="0.9" placeholder="请输入e" type="text" class="layui-input" lay-verify="required" required/>
+                        </div>
+                    </div>
+
+                    <div class="layui-inline layui-col-md12">
+                        <label class="layui-form-label">p<span style="color: red;">*</span></label>
+                        <div class="layui-input-block">
+                            <input name="p" value="0.06" placeholder="请输入p" type="text" class="layui-input" lay-verify="required" required/>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group-bottom text-center">
+        <button class="layui-btn" lay-filter="btnSubmit" lay-submit>&emsp;提交&emsp;</button>
+        <button type="reset" class="layui-btn layui-btn-primary" ew-event="closeDialog">&emsp;取消&emsp;</button>
+    </div>
+</form>
+
+@}
