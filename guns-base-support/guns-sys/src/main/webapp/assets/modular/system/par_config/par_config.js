@@ -57,7 +57,7 @@ layui.use(['layer', 'form', 'table', 'admin', 'ax', 'func'], function () {
      */
     Notice.onEditNotice = function (data) {
         func.open({
-            height: 420,
+            height: 1000,
             title: '修改算法配置',
             content: Feng.ctxPath + "par_config/update/" + data.algo_id,
             tableId: Notice.tableId

@@ -14,6 +14,16 @@
                     </div>
 
                     <div class="layui-inline layui-col-md12">
+                        <label class="layui-form-label">开门方向<span style="color: red;">*</span></label>
+                        <div class="layui-input-block">
+                            <select name="open_doors" lay-verify="required" id="train">
+                                <option value="0">后开门和左侧开门</option>
+                                <option value="1">后开门</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="layui-inline layui-col-md12">
                         <label class="layui-form-label">车辆载重满载率<span style="color: red;">*</span></label>
                         <div class="layui-input-block">
                             <input name="per_load" value="0.9" placeholder="请输入车辆载重满载率" type="text" class="layui-input" lay-verify="required" required/>

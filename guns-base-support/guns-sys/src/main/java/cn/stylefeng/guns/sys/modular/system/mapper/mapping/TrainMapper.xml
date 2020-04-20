@@ -30,7 +30,6 @@
         <!--<if test="condition != null and condition != ''">-->
             <!--where train_name like CONCAT('%',#{condition},'%') or train_id like CONCAT('%',#{condition},'%')-->
         <!--</if>-->
-        where train_id > 1000
     </select>
 
 
