@@ -1,4 +1,4 @@
-@layout("/common/_form.html",{js:["/assets/modular/system/zhuangche/zhuangche.js"]}){
+@layout("/common/_container.html",{plugins:["ztree"],js:["/assets/modular/system/zhuangche/zhuangche.js"]}){
 
 <form class="layui-form" id="noticeForm" lay-filter="noticeForm">
     <div class="layui-fluid" style="padding-bottom: 75px;">
@@ -9,13 +9,6 @@
                     <label class="layui-form-label">班列id</label>
                     <div class="layui-inline">
                         <select name="city" lay-verify="required" id="train">
-                            <option value=""></option>
-                            <option value="1587133260">1587133260</option>
-                            <option value="1587133275">1587133275</option>
-                            <option value="1587133350">1587133350</option>
-                            <option value="1587181857">1587181857</option>
-                            <option value="1587180324">1587180324</option>
-                            <option value="1587134464">1587134464</option>
                         </select>
                     </div>
                 </div>
@@ -23,12 +16,6 @@
                     <label class="layui-form-label">车辆id</label>
                     <div class="layui-inline">
                         <select name="city" lay-verify="required" id="car">
-                            <option value=""></option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
                         </select>
                     </div>
                 </div>
@@ -41,34 +28,37 @@
     </div>
 </form>
 
-<!--<table class="layui-table">-->
-    <!--<colgroup>-->
-        <!--<col width="150">-->
-        <!--<col width="200">-->
-        <!--<col>-->
-    <!--</colgroup>-->
-    <!--<thead>-->
-    <!--<tr>-->
-        <!--<th>左侧车厢</th>-->
-        <!--<th>右侧车厢</th>-->
-    <!--</tr>-->
-    <!--</thead>-->
-    <!--<tbody>-->
-    <!--<tr>-->
-        <!--<td>贤心</td>-->
-        <!--<td>2016-11-29</td>-->
-    <!--</tr>-->
-    <!--<tr>-->
-        <!--<td>许闲心</td>-->
-        <!--<td>2016-11-28</td>-->
-    <!--</tr>-->
-    <!--</tbody>-->
-<!--</table>-->
+<div id="result">
 
-
-
+</div>
 
 <script>
-
+    $(document).ready(function(){
+        const xmlHttp = new XMLHttpRequest();
+        var URL = "http://10.141.209.224:5006/gettraininfo";
+        xmlHttp.open( "GET", URL, false );
+        xmlHttp.send( null );
+        const traininfo = JSON.parse(xmlHttp.responseText);
+        var trainList = [];
+        var carList = [];
+        for (var key in traininfo)
+        {
+            trainList.push(key);
+            alert(key);
+            carList.push(traininfo[key]);
+        }
+        for (var i = 0; i < trainList.length; i++) {
+            var option = document.createElement("option");
+            $(option).val(trainList[i]);
+            $(option).text(trainList[i]);
+            $('#train').append(option);
+        }
+        for (var i = 0; i < carList.length; i++) {
+            var option = document.createElement("option");
+            $(option).val(carList[i]);
+            $(option).text(carList[i]);
+            $('#car').append(option);
+        }
+    });
 </script>
 @}

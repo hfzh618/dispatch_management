@@ -6,6 +6,7 @@ import cn.stylefeng.guns.sys.core.exception.enums.BizExceptionEnum;
 import cn.stylefeng.guns.sys.core.log.LogObjectHolder;
 import cn.stylefeng.guns.sys.modular.system.entity.Dispatch;
 import cn.stylefeng.guns.sys.modular.system.service.DispatchService;
+import cn.stylefeng.guns.sys.modular.system.service.DispatchService2;
 import cn.stylefeng.guns.sys.modular.system.warpper.NoticeWrapper;
 import cn.stylefeng.roses.core.base.controller.BaseController;
 import cn.stylefeng.roses.core.util.ToolUtil;
@@ -34,6 +35,9 @@ public class DispatchController extends BaseController {
 
     @Autowired
     private DispatchService dispatchService;
+
+    @Autowired
+    private DispatchService2 dispatchService2;
 
     @RequestMapping("")
     public String index(){
@@ -72,6 +76,14 @@ public class DispatchController extends BaseController {
     @ResponseBody
     public Object list(String condition){
         Page<Map<String, Object>> list = this.dispatchService.list(condition);
+        Page<Map<String, Object>> wrap = new NoticeWrapper(list).wrap();
+        return LayuiPageFactory.createPageInfo(wrap);
+    }
+
+    @RequestMapping("list2")
+    @ResponseBody
+    public Object list2(String condition){
+        Page<Map<String, Object>> list = this.dispatchService2.list(condition);
         Page<Map<String, Object>> wrap = new NoticeWrapper(list).wrap();
         return LayuiPageFactory.createPageInfo(wrap);
     }

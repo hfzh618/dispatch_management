@@ -17,7 +17,6 @@ layui.use(['layer', 'form', 'table', 'admin', 'ax', 'func'], function () {
         var car_val = car.options[cindex].value;
         var showTimeInterval = setInterval(function(){
             var queryData = {};
-            queryData['condition']=train_val;
             table.reload(Notice.tableId, {
                 where: queryData, page: {curr: 1}
             });
@@ -45,16 +44,13 @@ layui.use(['layer', 'form', 'table', 'admin', 'ax', 'func'], function () {
     Notice.initColumn = function () {
         return [[
             {type: 'checkbox'},
-            {field: 'vehicletraceid',  hide: true, sort: true, title: '轨迹id'},
-            {field: 'trainid', align: "center", sort: true, title: '班列id'},
-            {field: 'vehicleid', align: "center", sort: true, title: '车辆id'},
-            {field: 'dispatchid', align: "center", sort: true, title: '调度单id'},
-            {field: 'cur_load', align: "center", sort: true, title: '当前载重'},
-            {field: 'cur_volume', align: "center", sort: true, title: '当前容积'},
-            {field: 'last_shop', align: "center", sort: true, title: '上一个网点'},
-            {field: 'next_shops', align: "center", sort: true, title: '待配送网点'},
-            {field: 'next_orders', align: "center", sort: true, title: '订单'},
-            {align: 'center', toolbar: '#tableBar', title: '操作', minWidth: 200}
+            {field: 'uid',  align: "center", sort: true, title: '订单编号'},
+            {field: 'weight', align: "center", sort: true, title: '订单重量'},
+            {field: 'volume', align: "center", sort: true, title: '订单体积'},
+            {field: 'state', align: "center", sort: true, title: '订单状态'},
+            {field: 'upsiteid', align: "center", sort: true, title: '上货门店'},
+            {field: 'downsiteid', align: "center", sort: true, title: '下货门店'}
+            // {align: 'center', toolbar: '#tableBar', title: '操作', minWidth: 200}
         ]];
     };
 
@@ -126,7 +122,7 @@ layui.use(['layer', 'form', 'table', 'admin', 'ax', 'func'], function () {
     // 渲染表格
     var tableResult = table.render({
         elem: '#' + Notice.tableId,
-        url: Feng.ctxPath + '/dispatch/trace/list',
+        url: Feng.ctxPath + '/new_order/list',
         page: true,
         height: "full-98",
         cellMinWidth: 100,

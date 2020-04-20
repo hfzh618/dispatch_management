@@ -32,7 +32,7 @@
         <include refid="Base_Column_List"></include>
         from info_vehicletrace
         <if test="condition != null and condition != ''">
-            where trainid like CONCAT('%',#{condition},'%') or vehicletraceid like CONCAT('%',#{condition},'%')
+            where trainid = #{condition}
         </if>
     </select>
 

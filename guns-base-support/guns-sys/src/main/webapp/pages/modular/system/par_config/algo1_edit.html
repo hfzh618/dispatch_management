@@ -6,59 +6,78 @@
             <div class="layui-card-header">基本信息</div>
             <div class="layui-card-body">
                 <div class="layui-form-item layui-row">
-                    <div class="layui-inline layui-col-md12">
-                        <label class="layui-form-label">遗传时的交叉率<span style="color: red;">*</span></label>
-                        <div class="layui-input-block">
-                            <input name="cross_rate" value="0.9" placeholder="请输入遗传时交叉率" type="text" class="layui-input" lay-verify="required" required/>
-                        </div>
-                    </div>
+                    <!--<div class="layui-inline layui-col-md12">-->
+                        <!--<label class="layui-form-label">遗传时的交叉率<span style="color: red;">*</span></label>-->
+                        <!--<div class="layui-input-block">-->
+                            <!--<input name="cross_rate" value="0.9" placeholder="请输入遗传时交叉率" type="text" class="layui-input" lay-verify="required" required/>-->
+                        <!--</div>-->
+                    <!--</div>-->
 
-                    <div class="layui-inline layui-col-md12">
-                        <label class="layui-form-label">遗传时的变异率<span style="color: red;">*</span></label>
-                        <div class="layui-input-block">
-                            <input name="variation_rate" value="0.09" placeholder="请输入遗传时的变异率" type="text" class="layui-input" lay-verify="required" required/>
-                        </div>
-                    </div>
+                    <!--<div class="layui-inline layui-col-md12">-->
+                        <!--<label class="layui-form-label">遗传时的变异率<span style="color: red;">*</span></label>-->
+                        <!--<div class="layui-input-block">-->
+                            <!--<input name="variation_rate" value="0.09" placeholder="请输入遗传时的变异率" type="text" class="layui-input" lay-verify="required" required/>-->
+                        <!--</div>-->
+                    <!--</div>-->
 
-                    <div class="layui-inline layui-col-md12">
-                        <label class="layui-form-label">变异时基因换位次数<span style="color: red;">*</span></label>
-                        <div class="layui-input-block">
-                            <input name="swap_count" value="5" placeholder="请输入变异时的基因换位次数" type="text" class="layui-input" lay-verify="required" required/>
-                        </div>
-                    </div>
+                    <!--<div class="layui-inline layui-col-md12">-->
+                        <!--<label class="layui-form-label">变异时基因换位次数<span style="color: red;">*</span></label>-->
+                        <!--<div class="layui-input-block">-->
+                            <!--<input name="swap_count" value="5" placeholder="请输入变异时的基因换位次数" type="text" class="layui-input" lay-verify="required" required/>-->
+                        <!--</div>-->
+                    <!--</div>-->
 
-                    <div class="layui-inline layui-col-md12">
-                        <label class="layui-form-label">爬山算法的迭代次数<span style="color: red;">*</span></label>
-                        <div class="layui-input-block">
-                            <input name="climb_epoch" value="20" placeholder="请输入爬山算法的迭代次数" type="text" class="layui-input" lay-verify="required" required/>
-                        </div>
-                    </div>
+                    <!--<div class="layui-inline layui-col-md12">-->
+                        <!--<label class="layui-form-label">爬山算法的迭代次数<span style="color: red;">*</span></label>-->
+                        <!--<div class="layui-input-block">-->
+                            <!--<input name="climb_epoch" value="20" placeholder="请输入爬山算法的迭代次数" type="text" class="layui-input" lay-verify="required" required/>-->
+                        <!--</div>-->
+                    <!--</div>-->
 
-                    <div class="layui-inline layui-col-md12">
-                        <label class="layui-form-label">排列个数<span style="color: red;">*</span></label>
-                        <div class="layui-input-block">
-                            <input name="rank_count" value="20" placeholder="请输入排列个数" type="text" class="layui-input" lay-verify="required" required/>
-                        </div>
-                    </div>
+                    <!--<div class="layui-inline layui-col-md12">-->
+                        <!--<label class="layui-form-label">排列个数<span style="color: red;">*</span></label>-->
+                        <!--<div class="layui-input-block">-->
+                            <!--<input name="rank_count" value="20" placeholder="请输入排列个数" type="text" class="layui-input" lay-verify="required" required/>-->
+                        <!--</div>-->
+                    <!--</div>-->
 
-                    <div class="layui-inline layui-col-md12">
-                        <label class="layui-form-label">迭代次数<span style="color: red;">*</span></label>
-                        <div class="layui-input-block">
-                            <input name="epoch" value="25" placeholder="请输入迭代次数" type="text" class="layui-input" lay-verify="required" required/>
-                        </div>
-                    </div>
+                    <!--<div class="layui-inline layui-col-md12">-->
+                        <!--<label class="layui-form-label">迭代次数<span style="color: red;">*</span></label>-->
+                        <!--<div class="layui-input-block">-->
+                            <!--<input name="epoch" value="25" placeholder="请输入迭代次数" type="text" class="layui-input" lay-verify="required" required/>-->
+                        <!--</div>-->
+                    <!--</div>-->
 
-                    <div class="layui-inline layui-col-md12">
-                        <label class="layui-form-label">生成不可行路线时的惩罚参数<span style="color: red;">*</span></label>
-                        <div class="layui-input-block">
-                            <input name="penalty" value="100" placeholder="请输入生成不可行路线时的惩罚参数" type="text" class="layui-input" lay-verify="required" required/>
-                        </div>
-                    </div>
+                    <!--<div class="layui-inline layui-col-md12">-->
+                        <!--<label class="layui-form-label">生成不可行路线时的惩罚参数<span style="color: red;">*</span></label>-->
+                        <!--<div class="layui-input-block">-->
+                            <!--<input name="penalty" value="100" placeholder="请输入生成不可行路线时的惩罚参数" type="text" class="layui-input" lay-verify="required" required/>-->
+                        <!--</div>-->
+                    <!--</div>-->
 
                     <div class="layui-inline layui-col-md12">
                         <label class="layui-form-label">装载率<span style="color: red;">*</span></label>
                         <div class="layui-input-block">
                             <input name="load_rate" value="100" placeholder="请输入装载率" type="text" class="layui-input" lay-verify="required" required/>
+                        </div>
+                    </div>
+
+                    <div class="layui-inline layui-col-md12">
+                        <label class="layui-form-label">平均速度<span style="color: red;">*</span></label>
+                        <div class="layui-input-block">
+                            <input name="average_speed" value="45" placeholder="请输入平均速度" type="text" class="layui-input" lay-verify="required" required/>
+                        </div>
+                    </div>
+                    <div class="layui-inline layui-col-md12">
+                        <label class="layui-form-label">最长行驶距离<span style="color: red;">*</span></label>
+                        <div class="layui-input-block">
+                            <input name="drive_distance" value="200" placeholder="请输入最长行驶距离" type="text" class="layui-input" lay-verify="required" required/>
+                        </div>
+                    </div>
+                    <div class="layui-inline layui-col-md12">
+                        <label class="layui-form-label">车辆数<span style="color: red;">*</span></label>
+                        <div class="layui-input-block">
+                            <input name="car_number" value="50" placeholder="请输入车辆数" type="text" class="layui-input" lay-verify="required" required/>
                         </div>
                     </div>
 

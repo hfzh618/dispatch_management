@@ -24,7 +24,6 @@ spring:
     url: jdbc:mysql://10.141.209.224:3306/guns?autoReconnect=true&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=CONVERT_TO_NULL&useSSL=false&serverTimezone=CTT
     username: root
     password: sdzh521
-    filters: wall,mergeStat
 
 mybatis-plus:
   typeAliasesPackage: cn.stylefeng.guns.modular.system.model
