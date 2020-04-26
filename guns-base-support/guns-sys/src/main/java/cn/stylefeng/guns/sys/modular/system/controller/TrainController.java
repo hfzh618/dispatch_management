@@ -44,14 +44,14 @@ public class TrainController extends BaseController {
 
     @RequestMapping("train_add")
     public String trainAdd() {
-        return PREFIX + "train_add.html";
+        return PREFIX + "train_add2.html";
     }
 
     @RequestMapping("train_update/{trainId}")
     public String trainUpdate(@PathVariable Long trainId, Model model) {
         Train train = this.trainService.getById(trainId);
         model.addAllAttributes(BeanUtil.beanToMap(train));
-        return PREFIX + "train_edit.html";
+        return PREFIX + "train_edit2.html";
     }
 
     @RequestMapping("list")
@@ -65,6 +65,11 @@ public class TrainController extends BaseController {
     @RequestMapping(value = "add")
     @ResponseBody
     public Object add(Train train) {
+        System.out.println(train);
+        String original = train.getTrainStops();
+        original  = original.replaceAll("& #40;","(");
+        original  = original.replaceAll("& #41;",")");
+        train.setTrainStops(original);
         if (ToolUtil.isOneEmpty(train, train.getTrainName())) {
             throw new ServiceException(BizExceptionEnum.REQUEST_NULL);
         }
@@ -84,6 +89,10 @@ public class TrainController extends BaseController {
     @RequestMapping(value = "update")
     @ResponseBody
     public Object update(Train train) {
+        String original = train.getTrainStops();
+        original  = original.replaceAll("& #40;","(");
+        original  = original.replaceAll("& #41;",")");
+        train.setTrainStops(original);
         if (ToolUtil.isOneEmpty(train, train.getTrainId())) {
             throw new ServiceException(BizExceptionEnum.REQUEST_NULL);
         }
@@ -92,6 +101,7 @@ public class TrainController extends BaseController {
         old.setTrainType(train.getTrainType());
         old.setTrainName(train.getTrainName());
         old.setTrainStops(train.getTrainStops());
+        old.setShops_id(train.getShops_id());
         this.trainService.updateById(old);
         return SUCCESS_TIP;
     }

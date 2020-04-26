@@ -13,7 +13,7 @@
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        train_id AS "trainId", train_name AS "trainName",  train_type AS "trainType", train_status AS "trainStatus", train_stops as "trainStops"
+        train_id AS "trainId", train_name AS "trainName",  train_type AS "trainType", train_status AS "trainStatus", train_stops as "trainStops",shops_id as "shops_id"
     </sql>
 
     <select id="getTrains" resultType="map" parameterType="com.baomidou.mybatisplus.extension.plugins.pagination.Page">

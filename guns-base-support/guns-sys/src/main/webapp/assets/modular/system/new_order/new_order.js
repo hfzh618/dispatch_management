@@ -48,8 +48,8 @@ layui.use(['layer', 'form', 'table', 'admin', 'ax', 'func'], function () {
             {field: 'weight', align: "center", sort: true, title: '订单重量'},
             {field: 'volume', align: "center", sort: true, title: '订单体积'},
             {field: 'state', align: "center", sort: true, title: '订单状态'},
-            {field: 'upsiteid', align: "center", sort: true, title: '上货门店'},
-            {field: 'downsiteid', align: "center", sort: true, title: '下货门店'}
+            {field: 'upsitename', align: "center", sort: true, title: '上货门店'},
+            {field: 'downsitename', align: "center", sort: true, title: '下货门店'}
             // {align: 'center', toolbar: '#tableBar', title: '操作', minWidth: 200}
         ]];
     };

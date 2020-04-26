@@ -17,7 +17,7 @@
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        vehicletraceid AS "vehicletraceid", trainid AS "trainid",  vehicleid AS "vehicleid", dispatchid AS "dispatchid", cur_load as "cur_load",cur_volume as "cur_volume",last_shop as "last_shop",next_shops as "next_shops",next_orders as "next_orders"
+        vehicletraceid AS "vehicletraceid", trainid AS "trainid",  vehicleid AS "vehicleid", dispatchid AS "dispatchid", cur_load as "cur_load",cur_volume as "cur_volume",last_shop as "last_shop",next_shops as "next_shops",next_orders as "next_orders",car_num as "car_num"
     </sql>
 
     <select id="getTraces" resultType="map" parameterType="com.baomidou.mybatisplus.extension.plugins.pagination.Page">
@@ -32,7 +32,7 @@
         <include refid="Base_Column_List"></include>
         from info_vehicletrace
         <if test="condition != null and condition != ''">
-            where trainid = #{condition}
+            where car_num = #{condition}
         </if>
     </select>
 

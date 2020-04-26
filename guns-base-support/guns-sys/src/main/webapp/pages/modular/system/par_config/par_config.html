@@ -9,17 +9,6 @@
         <div class="layui-col-xs12">
             <div class="layui-card">
                 <div class="layui-card-body">
-                    <div class="layui-form toolbar">
-                        <div class="layui-form-item">
-                            <div class="layui-inline">
-                                <input id="condition" class="layui-input" type="text" placeholder="算法名称"/>
-                            </div>
-                            <div class="layui-inline">
-                                <button id="btnSearch" class="layui-btn icon-btn"><i class="layui-icon">&#xe615;</i>搜索</button>
-                            </div>
-                        </div>
-                    </div>
-
                     <table class="layui-table" id="noticeTable" lay-filter="noticeTable"></table>
                 </div>
             </div>
@@ -28,9 +17,7 @@
 </div>
 
 <script type="text/html" id="tableBar">
-    @if(shiro.hasPermission("/info/car/update")){
     <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="edit">修改</a>
-    @}
 </script>
 
 @}

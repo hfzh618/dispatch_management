@@ -32,6 +32,12 @@ public class New_Order implements Serializable {
     @TableField("upsiteid")
     private int upsiteid;
 
+    @TableField("upsitename")
+    private String upsitename;
+
+    @TableField("downsitename")
+    private String downsitename;
+
     @TableField("downsiteid")
     private int downsiteid;
 

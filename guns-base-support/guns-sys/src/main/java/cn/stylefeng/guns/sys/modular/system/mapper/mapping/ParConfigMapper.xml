@@ -16,17 +16,6 @@
         </if>
     </select>
 
-    <!--<select id="getAlgo1" resultMap="cn.stylefeng.guns.sys.modular.system.entity.Algo1">-->
-        <!--select * from dynamic_train_conf limit 1-->
-    <!--</select>-->
-
-    <!--<select id="getAlgo2" resultMap="cn.stylefeng.guns.sys.modular.system.entity.Algo2">-->
-        <!--select * from dynamic_load_conf limit 1-->
-    <!--</select>-->
-
-    <!--<select id="getAlgo3" resultMap="cn.stylefeng.guns.sys.modular.system.entity.Algo3">-->
-        <!--select * from dynamic_pick_conf limit 1-->
-    <!--</select>-->
 
     <insert id="saveCar" parameterType="cn.stylefeng.guns.sys.modular.system.entity.Car" >
        insert into info_car(car_num, car_load, car_status, car_type) values(#{carNum},#{carLoad},#{carStatus},#{carType})

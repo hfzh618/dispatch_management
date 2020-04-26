@@ -20,12 +20,9 @@ layui.use(['layer', 'form', 'table', 'admin', 'ax', 'func'], function () {
     Notice.initColumn = function () {
         return [[
             {type: 'checkbox'},
-            {field: 'id', hide: true, sort: true, title: 'id'},
-            {field: 'per_load',  align: "center", sort: true, title: '车辆载重满载率'},
-            {field: 'per_volume', align: "center", sort: true, title: '车辆空间满载率'},
-            {field: 'u', align: "center", sort: true, title: '单位人力时间成本'},
-            {field: 'open_doors', align: "center", sort: true, title: '车辆开门方向'},
-            {field: 'not_pick_cond', align: "center", sort: true, title: '车辆接收订单的最远距离'},
+            {field: 'algo_id',  hide: true, sort: true, title: '算法id'},
+            {field: 'algo_name', align: "center", sort: true, title: '算法名称'},
+            {field: 'algo_desc', align: "center", sort: true, title: '算法描述'},
             {align: 'center', toolbar: '#tableBar', title: '操作', minWidth: 200}
         ]];
     };
@@ -41,7 +38,6 @@ layui.use(['layer', 'form', 'table', 'admin', 'ax', 'func'], function () {
         });
     };
 
-
     /**
      * 点击编辑通知
      *
@@ -51,7 +47,7 @@ layui.use(['layer', 'form', 'table', 'admin', 'ax', 'func'], function () {
         func.open({
             height: 1000,
             title: '修改算法配置',
-            content: Feng.ctxPath + "/par_config/update2_html/" + data.id,
+            content: Feng.ctxPath + "par_config/update_html/" + data.algo_id,
             tableId: Notice.tableId
         });
     };
@@ -71,6 +67,10 @@ layui.use(['layer', 'form', 'table', 'admin', 'ax', 'func'], function () {
         Notice.search();
     });
 
+    // // 添加按钮点击事件
+    // $('#btnAdd').click(function () {
+    //     Notice.openAddNotice();
+    // });
 
     // 工具条点击事件
     table.on('tool(' + Notice.tableId + ')', function (obj) {

@@ -19,6 +19,16 @@ layui.use(['layer', 'form', 'admin', 'ax'], function () {
         }, function (data) {
             Feng.error("添加失败！" + data.responseJSON.message)
         });
+        var codes = [];
+        var names = [];
+        for(var i =0; i< data.field.trainStops.length;i++){
+            codes.push(data.field.trainStops[i].split(":")[0]);
+            names.push(data.field.trainStops[i].split(":")[1]);
+        }
+        // data.field.trainStops = data.field.trainStops.join(',');
+        data.field.trainStops = names.join(',');
+        data.field.shops_id = codes.join(',');
+
         ajax.set(data.field);
         ajax.start();
 

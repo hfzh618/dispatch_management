@@ -90,7 +90,6 @@ public class CarController extends BaseController {
         old.setCarNum(car.getCarNum());
         old.setCarStatus(car.getCarStatus());
         old.setCarType(car.getCarType());
-        old.setAvaliable_num(car.getAvaliable_num());
         old.setCar_speed(car.getCar_speed());
         old.setVolume(car.getVolume());
         old.setStart_cost(car.getStart_cost());

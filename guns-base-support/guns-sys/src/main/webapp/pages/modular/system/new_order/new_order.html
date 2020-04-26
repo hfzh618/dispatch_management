@@ -17,7 +17,7 @@
                     </div>
                 </div>
                 <div class="layui-form-item">
-                    <label class="layui-form-label">车辆id</label>
+                    <label class="layui-form-label">车辆</label>
                     <div class="layui-inline">
                         <select name="city" lay-verify="required" id="car">
                         </select>
@@ -57,14 +57,15 @@
         xmlHttp.send( null );
         const traininfo = JSON.parse(xmlHttp.responseText);
         var trainList = [];
-        var carList = [];
-        for (var key in traininfo)
+        var carIdList = [];
+        var carNumList = [];
+        for (var trainID in traininfo)
         {
-            trainList.push(key);
-            var el = traininfo[key].toString();
-            var cals = el.split(",");
-            for (var i=0;i<cals.length;i++){
-                carList.push(cals[i]);
+            trainList.push(trainID);
+            var el = traininfo[trainID];
+            for (var item in el){
+                carIdList.push(item);
+                carNumList.push(el[item]);
             }
         }
         for (var i = 0; i < trainList.length; i++) {
@@ -73,10 +74,10 @@
             $(option).text(trainList[i]);
             $('#train').append(option);
         }
-        for (var i = 0; i < carList.length; i++) {
+        for (var i = 0; i < carNumList.length; i++) {
             var option = document.createElement("option");
-            $(option).val(carList[i]);
-            $(option).text(carList[i]);
+            $(option).val(carIdList[i]);
+            $(option).text(carNumList[i]);
             $('#car').append(option);
         }
     });

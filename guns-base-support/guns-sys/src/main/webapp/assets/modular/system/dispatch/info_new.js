@@ -19,7 +19,7 @@ layui.use(['layer', 'form', 'table', 'admin', 'ax', 'func'], function () {
      */
     Notice.initColumn = function () {
         return [[
-            {field: 'id',align: "center", sort: true, title: '调度单编号'},
+            {field: 'dispatch_code',align: "center", sort: true, title: '调度单编号'},
             // {field: 'banlie_id', align: "center", sort: true, title: '班列名称'},
             // {field: 'driver_id', align: "center", sort: true, title: '司机名称'},
             // {field: 'car_id', align: "center", sort: true, title: '汽车名称'},

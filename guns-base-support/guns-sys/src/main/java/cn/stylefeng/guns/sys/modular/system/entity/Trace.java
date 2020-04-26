@@ -36,6 +36,9 @@ public class Trace implements Serializable {
     @TableField("vehicleid")
     private int vehicleid;
 
+    @TableField("car_num")
+    private String car_num;
+
     @TableField("dispatchid")
     private int dispatchid;
 

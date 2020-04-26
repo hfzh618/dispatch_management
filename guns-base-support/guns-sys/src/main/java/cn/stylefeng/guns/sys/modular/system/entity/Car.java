@@ -36,9 +36,6 @@ public class Car implements Serializable {
     @TableField("carrier_name")
     private String carrier_name;
 
-    @TableField("avaliable_num")
-    private int avaliable_num;
-
     @TableField("rated_load")
     private String rated_load;
 

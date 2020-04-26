@@ -1,0 +1,76 @@
+@layout("/common/_form.html",{js:["/assets/modular/system/train/train_edit.js"]}){
+
+<form class="layui-form" id="noticeForm" lay-filter="noticeForm">
+    <div class="layui-fluid" style="padding-bottom: 75px;">
+        <div class="layui-card">
+            <div class="layui-card-header">基本信息</div>
+            <div class="layui-card-body">
+                <div class="layui-form-item layui-row">
+                    <input name="trainId" value="${trainId}" type="hidden"/>
+
+                    <div class="layui-inline layui-col-md12">
+                        <label class="layui-form-label">班列名称<span style="color: red;">*</span></label>
+                        <div class="layui-input-block">
+                            <input name="trainName" value="${trainName}" placeholder="请输入班列名称" type="text" class="layui-input" lay-verify="required" required/>
+                        </div>
+                    </div>
+
+                    <div class="layui-inline layui-col-md12">
+                        <label class="layui-form-label">停靠点<span style="color: red;">*</span></label>
+                        <input type="text" id="shops_id" value="${trainStops}" style="display:none" />
+                        <div class="layui-input-block">
+                            <select multiple name="trainStops" lay-verify="" lay-search id="trainStops">
+                                <option value="">请选择停靠点</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="layui-inline layui-col-md12">
+                        <label class="layui-form-label">班列状态<span style="color: red;">*</span></label>
+                        <div class="layui-input-block">
+                            <input name="trainStatus" value="${trainStatus}" placeholder="请输入班列状态" type="text" class="layui-input" lay-verify="required" required/>
+                        </div>
+                    </div>
+
+                    <div class="layui-inline layui-col-md12">
+                        <label class="layui-form-label">班列类型<span style="color: red;">*</span></label>
+                        <div class="layui-input-block">
+                            <input name="trainType" value="${trainType}" placeholder="请输入班列类型" type="text" class="layui-input" lay-verify="required" required/>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group-bottom text-center">
+        <button class="layui-btn" lay-filter="btnSubmit" lay-submit>&emsp;提交&emsp;</button>
+        <button type="reset" class="layui-btn layui-btn-primary" ew-event="closeDialog">&emsp;取消&emsp;</button>
+    </div>
+</form>
+
+<script src="https://cdn.bootcss.com/jquery/3.5.0/jquery.min.js"></script>
+<script>
+    $(document).ready(function(){
+        var shops_id = $('#shops_id').val();
+        var shop_code_arr = shops_id.split(",");
+        const xmlHttp = new XMLHttpRequest();
+        var URL = "http://10.141.209.224:5303/market/";
+        xmlHttp.open( "GET", URL, false );
+        xmlHttp.send( null );
+        const marketinfo = JSON.parse(xmlHttp.responseText);
+        const codes = marketinfo.code;
+        const names = marketinfo.name;
+        for (var i = 0; i < codes.length; i++) {
+            var option = document.createElement("option");
+            $(option).val(codes[i]+':'+names[i]);
+            $(option).text(names[i]);
+            if (shop_code_arr.includes(names[i])==true){
+                $(option).attr("selected",true);
+            }
+            $('#trainStops').append(option);
+        }
+    });
+</script>
+@}

@@ -7,7 +7,7 @@ layui.use(['layer', 'form', 'admin', 'ax'], function () {
 
     // 表单提交事件
     form.on('submit(btnSubmit)', function (data) {
-        var ajax = new $ax(Feng.ctxPath + "/info/train/update", function (data) {
+        var ajax = new $ax(Feng.ctxPath + "/par_config/updatenew", function (data) {
             Feng.success("添加成功！");
 
             //传给上个页面，刷新table用
@@ -19,16 +19,6 @@ layui.use(['layer', 'form', 'admin', 'ax'], function () {
         }, function (data) {
             Feng.error("添加失败！" + data.responseJSON.message)
         });
-        var codes = [];
-        var names = [];
-        for(var i =0; i< data.field.trainStops.length;i++){
-            codes.push(data.field.trainStops[i].split(":")[0]);
-            names.push(data.field.trainStops[i].split(":")[1]);
-        }
-        // data.field.trainStops = data.field.trainStops.join(',');
-        data.field.trainStops = names.join(',');
-        data.field.shops_id = codes.join(',');
-
         ajax.set(data.field);
         ajax.start();
 

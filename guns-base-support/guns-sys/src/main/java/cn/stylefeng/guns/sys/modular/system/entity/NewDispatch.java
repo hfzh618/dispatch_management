@@ -32,6 +32,8 @@ public class NewDispatch implements Serializable {
 //    @TableField("shops_id")
 //    private String shops_id;
 
+    @TableField("dispatch_code")
+    private String dispatch_code;
 
     @TableField("train_name")
     private String train_name;

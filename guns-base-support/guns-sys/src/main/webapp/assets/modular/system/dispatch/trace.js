@@ -15,9 +15,10 @@ layui.use(['layer', 'form', 'table', 'admin', 'ax', 'func'], function () {
         var car =  document.getElementById("car");
         var cindex= car.selectedIndex;
         var car_val = car.options[cindex].value;
+        var car_text = car.options[cindex].text;
         var showTimeInterval = setInterval(function(){
             var queryData = {};
-            queryData['condition']=train_val;
+            queryData['condition']=car_text;
             table.reload(Notice.tableId, {
                 where: queryData, page: {curr: 1}
             });
@@ -47,8 +48,7 @@ layui.use(['layer', 'form', 'table', 'admin', 'ax', 'func'], function () {
             {type: 'checkbox'},
             {field: 'vehicletraceid',  hide: true, sort: true, title: '轨迹id'},
             {field: 'trainid', align: "center", sort: true, title: '班列id'},
-            {field: 'vehicleid', align: "center", sort: true, title: '车辆id'},
-            {field: 'dispatchid', align: "center", sort: true, title: '调度单id'},
+            {field: 'car_num', align: "center", sort: true, title: '车牌号'},
             {field: 'cur_load', align: "center", sort: true, title: '当前载重'},
             {field: 'cur_volume', align: "center", sort: true, title: '当前容积'},
             {field: 'last_shop', align: "center", sort: true, title: '上一个网点'},

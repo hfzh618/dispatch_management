@@ -15,7 +15,7 @@
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        car_id AS "carId", car_num AS "carNum",  car_type AS "carType", car_status AS "carStatus", car_load as "carLoad",carrier_code AS "carrier_code",carrier_name as "carrier_name",avaliable_num as "avaliable_num",rated_load as "rated_load",rated_volume as "rated_volume",car_speed as "car_speed",volume as "volume",permit_type as "permit_type",start_cost as "start_cost",park_cost as "park_cost",perkm_cost as "perkm_cost"
+        car_id AS "carId", car_num AS "carNum",  car_type AS "carType", car_status AS "carStatus", car_load as "carLoad",carrier_code AS "carrier_code",carrier_name as "carrier_name",rated_load as "rated_load",rated_volume as "rated_volume",car_speed as "car_speed",volume as "volume",permit_type as "permit_type",start_cost as "start_cost",park_cost as "park_cost",perkm_cost as "perkm_cost"
     </sql>
 
     <select id="getCars" resultType="map" parameterType="com.baomidou.mybatisplus.extension.plugins.pagination.Page">

@@ -36,7 +36,7 @@
         <!--</if>-->
         <!--order by id desc-->
 
-        select dispatch.id,info_train.train_name,info_driver.driver_name,info_car.car_num,dispatch.shops_name,dispatch.deliverydate
+        select dispatch.id,dispatch.dispatch_code,info_train.train_name,info_driver.driver_name,info_car.car_num,dispatch.shops_name,dispatch.deliverydate
         from dispatch,info_train,info_driver,info_car
         where dispatch.banlie_id = info_train.train_id and dispatch.driver_id = info_driver.driver_id
         and dispatch.car_id = info_car.car_id

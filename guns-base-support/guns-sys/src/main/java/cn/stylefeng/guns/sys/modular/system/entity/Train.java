@@ -32,7 +32,8 @@ public class Train implements Serializable {
     @TableField("train_stops")
     private String trainStops;
 
-
+    @TableField("shops_id")
+    private String shops_id;
 
     /**
      * 汽车状态

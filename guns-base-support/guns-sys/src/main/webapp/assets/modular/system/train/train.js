@@ -45,7 +45,7 @@ layui.use(['layer', 'form', 'table', 'admin', 'ax', 'func'], function () {
      */
     Notice.openAddNotice = function () {
         func.open({
-            height: 420,
+            height: 800,
             title: '添加班列',
             content: Feng.ctxPath + '/info/train/train_add',
             tableId: Notice.tableId
@@ -59,7 +59,7 @@ layui.use(['layer', 'form', 'table', 'admin', 'ax', 'func'], function () {
      */
     Notice.onEditNotice = function (data) {
         func.open({
-            height: 420,
+            height: 800,
             title: '修改班列信息',
             content: Feng.ctxPath + "info/train/train_update/" + data.trainId,
             tableId: Notice.tableId

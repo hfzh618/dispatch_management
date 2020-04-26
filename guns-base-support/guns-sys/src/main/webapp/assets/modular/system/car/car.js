@@ -28,7 +28,6 @@ layui.use(['layer', 'form','table', 'ax', 'laydate','admin','func'], function ()
             {field: 'carType', align: "center", sort: true, title: '车辆类型'},
             {field: 'carrier_code', align: "center", sort: true, title: '承运商编码'},
             {field: 'carrier_name', align: "center", sort: true, title: '承运商名称'},
-            {field: 'avaliable_num', align: "center", sort: true, title: '可用数量'},
             {field: 'rated_load', align: "center", sort: true, title: '额定载重'},
             {field: 'car_speed', align: "center", sort: true, title: '行驶速度'},
             {field: 'volume', align: "center", sort: true, title: '容积'},
