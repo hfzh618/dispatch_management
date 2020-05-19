@@ -27,15 +27,6 @@
     <!--</select>-->
 
     <select id="list" resultType="map">
-        <!--select-->
-        <!--*-->
-        <!--&lt;!&ndash;<include refid="Base_Column_List"></include>&ndash;&gt;-->
-        <!--from dispatch-->
-        <!--<if test="condition != null and condition != ''">-->
-            <!--where id like CONCAT('%',#{condition},'%')-->
-        <!--</if>-->
-        <!--order by id desc-->
-
         select dispatch.id,dispatch.dispatch_code,info_train.train_name,info_driver.driver_name,info_car.car_num,dispatch.shops_name,dispatch.deliverydate
         from dispatch,info_train,info_driver,info_car
         where dispatch.banlie_id = info_train.train_id and dispatch.driver_id = info_driver.driver_id

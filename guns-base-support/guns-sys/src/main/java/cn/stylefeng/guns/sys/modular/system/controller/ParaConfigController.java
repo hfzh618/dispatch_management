@@ -41,15 +41,6 @@ public class ParaConfigController extends BaseController {
     @Autowired
     private ParConfigService2 parConfigService2;
 
-    @Autowired
-    private Algo1Service algo1Service;
-
-    @Autowired
-    private Algo2Service algo2Service;
-
-    @Autowired
-    private Algo3Service algo3Service;
-
     @RequestMapping("")
     public String index(){
         return PREFIX + "par_config.html";
@@ -63,21 +54,6 @@ public class ParaConfigController extends BaseController {
         return PREFIX + "par_config_edit.html";
     }
 
-
-
-    @RequestMapping("update_html/{algo_id}")
-    public String carUpdate(@PathVariable Long algo_id, Model model) {
-        if (algo_id==1){
-            Algo1 algo1 = this.algo1Service.getById(1);
-            model.addAllAttributes(BeanUtil.beanToMap(algo1));
-            return PREFIX + "algo1_edit.html";
-        }else if (algo_id ==2){
-            return PREFIX + "algo2_edit.html";
-        }else if (algo_id==3){
-            return PREFIX + "algo3_edit.html";
-        }
-        return PREFIX + "par_config.html";
-    }
 
     @RequestMapping("list")
     @ResponseBody
@@ -105,37 +81,6 @@ public class ParaConfigController extends BaseController {
         old.setPer_load(algoConf.getPer_load());
         old.setPer_volume(algoConf.getPer_volume());
         parConfigService2.updateById(old);
-        return SUCCESS_TIP;
-    }
-
-    @RequestMapping(value = "/update/1")
-    @ResponseBody
-    public Object update(Algo1 algo1) {
-        Algo1 old = algo1Service.getById(1);
-        old.setCar_number(algo1.getCar_number());
-        old.setDrive_distance(algo1.getDrive_distance());
-        old.setLoad_rate(algo1.getLoad_rate());
-        algo1Service.updateById(old);
-        return SUCCESS_TIP;
-    }
-
-    @RequestMapping(value = "/update/2")
-    @ResponseBody
-    public Object update2(Algo2 algo2) throws IOException {
-        Algo2 old = algo2Service.getById(1);
-        old.setE(algo2.getE());
-        old.setOpen_doors(algo2.getOpen_doors());
-        old.setPer_load(algo2.getPer_load());
-        old.setPer_volume(algo2.getPer_volume());
-//        algo2Service.updateById(old);
-
-        return SUCCESS_TIP;
-    }
-
-    @RequestMapping(value = "/update/3")
-    @ResponseBody
-    public Object update3(Algo3 algo3) throws IOException {
-
         return SUCCESS_TIP;
     }
 }

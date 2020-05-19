@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.stylefeng.guns.sys.modular.system.mapper.HistoryDispatchMapper">
+
+    <select id="list" resultType="map">
+        select dispatch_trace.id,dispatch_trace.dispatch_code,info_train.train_name,info_driver.driver_name,info_car.car_num,dispatch_trace.shops_name,dispatch_trace.deliverydate
+        from dispatch_trace,info_train,info_driver,info_car
+        where dispatch_trace.banlie_id = info_train.train_id and dispatch_trace.driver_id = info_driver.driver_id
+        <if test="condition != null and condition != ''">
+            and dispatch_trace.dispatch_code like CONCAT('%',#{condition},'%')
+        </if>
+        and dispatch_trace.car_id = info_car.car_id
+        order by id desc
+    </select>
+
+
+
+</mapper>

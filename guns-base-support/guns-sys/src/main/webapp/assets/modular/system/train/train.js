@@ -79,6 +79,40 @@ layui.use(['layer', 'form', 'table', 'admin', 'ax', 'func'], function () {
             }, function (data) {
                 Feng.error("删除失败!" + data.responseJSON.message + "!");
             });
+
+            //添加到接口中去
+            let param = new URLSearchParams();
+            param.append('banlieId',data.trainId);
+
+            try {
+                axios({
+                    method: 'post',
+                    url: 'http://10.141.209.224:5001/deleteBanlie',
+                    data: param
+                })
+                    .then(response => {
+                        let data = response.data;
+                        console.log('---------------');
+                        alert(data);
+                        console.log(data);
+                        console.log('---------------')
+                        let tmp, flag = 1;
+                        if (data.status == 'success') {
+                            console.log('success');
+                            alert('success');
+                        } else {
+                            console.log(data.status);
+                        }
+                    })
+                    .catch(function (error) { // 请求失败处理
+                        console.log(error);
+                    });
+            } catch (e) {
+                console.log('出错：', e);
+            }
+
+
+
             ajax.set("trainId", data.trainId);
             ajax.start();
         };

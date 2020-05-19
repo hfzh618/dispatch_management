@@ -36,14 +36,4 @@ public class MonitorController {
     public String dynamic_order(){
         return PREFIX + "dynamic.html";
     }
-
-    @RequestMapping("/leitao")
-    public String leitao(){
-        return PREFIX + "leitao.html";
-    }
-
-    @RequestMapping("/wangpeng")
-    public String wangpeng(){
-        return PREFIX + "wangpeng.html";
-    }
 }

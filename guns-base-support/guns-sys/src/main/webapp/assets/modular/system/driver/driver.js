@@ -23,7 +23,14 @@ layui.use(['layer', 'form', 'table', 'admin', 'ax', 'func'], function () {
             {field: 'driverId',  hide: true, sort: true, title: 'id'},
             {field: 'driverName', align: "center", sort: true, title: '姓名'},
             {field: 'driverTel', align: "center", sort: true, title: '电话'},
-            {field: 'driverStatus', align: "center", sort: true, title: '状态'},
+            // {field: 'driverStatus', align: "center", sort: true, title: '状态'},
+            {field: 'driverStatus', align: "center", sort: true, templet: function(d){
+                    if (d.driverStatus == '待命'){
+                        return d.driverStatus;
+                    } else{
+                        return  '<span style="color: #c00;">'+ d.driverStatus +'</span>'
+                    }
+                },title: '状态'},
             {field: 'driverType', align: "center", sort: true, title: '驾照类型'},
             {align: 'center', toolbar: '#tableBar', title: '操作', minWidth: 200}
         ]];

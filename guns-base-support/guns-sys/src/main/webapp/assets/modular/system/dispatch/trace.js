@@ -58,6 +58,21 @@ layui.use(['layer', 'form', 'table', 'admin', 'ax', 'func'], function () {
         ]];
     };
 
+    var showTimeInterval;
+
+    Notice.refreshTable = function(){
+        showTimeInterval = setInterval(function(){
+            var queryData = {};
+            table.reload(Notice.tableId, {
+                where: queryData, page: {curr: 1}
+            });
+        },2000);
+    };
+
+    Notice.stopRefreshTable =  function(){
+        clearInterval(showTimeInterval);
+    };
+
     /**
      * 点击查询按钮
      */
@@ -136,6 +151,16 @@ layui.use(['layer', 'form', 'table', 'admin', 'ax', 'func'], function () {
     // 搜索按钮点击事件
     $('#btnSearch').click(function () {
         Notice.search();
+    });
+
+    // 搜索按钮点击事件
+    $('#btnRefresh').click(function () {
+        Notice.refreshTable();
+    });
+
+    // 搜索按钮点击事件
+    $('#btnRefreshStop').click(function () {
+        Notice.stopRefreshTable();
     });
 
     // 添加按钮点击事件

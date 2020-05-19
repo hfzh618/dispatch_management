@@ -103,7 +103,7 @@ async function lngLat2Marker(lng, lat, crossIndex) {
         animation:"AMAP_ANIMATION_DROP",
         // icon: "https://webapi.amap.com/theme/v1.3/markers/n/mark_b.png"
         // icon: "road.png",
-        icon: "${ctxPath}/assets/expand/images/road.png",
+        icon: ".${ctxPath}/assets/expand/images/road.png",
         // icon: "https://cdn.nlark.com/yuque/0/2019/png/372732/1574002651750-8ad96322-1fa7-41e4-a607-38d620953edd.png"
         // icon: "https://cdn.nlark.com/yuque/0/2019/png/372732/1574002941905-db0c9918-2cb4-4a3e-a1a5-b632c260eadb.png"
 

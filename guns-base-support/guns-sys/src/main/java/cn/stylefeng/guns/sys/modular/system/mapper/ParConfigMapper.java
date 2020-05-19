@@ -15,8 +15,4 @@ public interface ParConfigMapper extends BaseMapper<ParConfig> {
 
     Page<Map<String, Object>> list(@Param("page") Page page, @Param("condition") String condition);
 
-    Algo1 getAlgo1();
-    Algo2 getAlgo2();
-    Algo3 getAlgo3();
-
 }

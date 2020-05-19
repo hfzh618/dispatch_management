@@ -21,14 +21,22 @@ layui.use(['layer', 'form', 'table', 'admin', 'ax', 'func'], function () {
         return [[
             {type: 'checkbox'},
             {field: 'id', hide: true, sort: true, title: 'id'},
-            {field: 'per_load',  align: "center", sort: true, title: '车辆载重满载率'},
-            {field: 'per_volume', align: "center", sort: true, title: '车辆空间满载率'},
-            {field: 'u', align: "center", sort: true, title: '单位人力时间成本'},
-            {field: 'open_doors', align: "center", sort: true, title: '车辆开门方向'},
-            {field: 'not_pick_cond', align: "center", sort: true, title: '车辆接收订单的最远距离'},
-            {align: 'center', toolbar: '#tableBar', title: '操作', minWidth: 200}
+            {field: 'per_load',  align: "center", sort: true,edit: 'text', title: '车辆载重满载率'},
+            {field: 'per_volume', align: "center", sort: true,edit: 'text', title: '车辆空间满载率'},
+            {field: 'u', align: "center", sort: true,edit: 'text', title: '单位人力时间成本'},
+            {field: 'open_doors', align: "center",edit: 'text', sort: true, title: '车辆开门方向'},
+            {field: 'not_pick_cond', align: "center",edit: 'text', sort: true, title: '车辆接收订单的最远距离'},
+            {align: 'center', toolbar: '#tableBar',edit: 'text', title: '操作', minWidth: 200}
         ]];
     };
+
+    //监听单元格编辑
+    table.on('edit(noticeTable)', function(obj){
+        var value = obj.value //得到修改后的值
+            ,data = obj.data //得到所在行所有键值
+            ,field = obj.field; //得到字段
+        layer.msg( field + ' 字段更改为：'+ value);
+    });
 
     /**
      * 点击查询按钮

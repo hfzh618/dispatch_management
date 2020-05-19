@@ -5,7 +5,7 @@
 </div>
 
 <form class="layui-form" id="noticeForm" lay-filter="noticeForm">
-    <div class="layui-fluid" style="padding-bottom: 75px;">
+    <div class="layui-fluid" style="padding-bottom: 20px;">
         <div class="layui-card">
             <div class="layui-card-header">基本信息</div>
             <div class="layui-card-body">
@@ -37,6 +37,14 @@
         <div class="layui-col-xs12">
             <div class="layui-card">
                 <div class="layui-card-body">
+                    <div class="layui-form toolbar">
+                        <div class="layui-form-item">
+                            <div class="layui-inline">
+                                <button id="btnRefresh" class="layui-btn icon-btn">刷新页面</button>
+                                <button id="btnRefreshStop" class="layui-btn icon-btn">停止刷新</button>
+                            </div>
+                        </div>
+                    </div>
                     <table class="layui-table" id="noticeTable" lay-filter="noticeTable"></table>
                 </div>
             </div>
@@ -81,6 +89,14 @@
             $('#car').append(option);
         }
     });
+</script>
+
+<script type="text/html" id="sexTpl">
+    {{#  if(data.field.state === '已处理'){ }}
+    <span style="color: #F581B1;">{{ d.state }}</span>
+    {{#  } else { }}
+    {{ d.sex }}
+    {{#  } }}
 </script>
 
 @}

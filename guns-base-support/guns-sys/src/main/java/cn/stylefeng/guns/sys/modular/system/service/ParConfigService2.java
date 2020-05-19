@@ -31,16 +31,4 @@ public class ParConfigService2 extends ServiceImpl<ParConfigMapper2, AlgoConf> {
         Page page = LayuiPageFactory.defaultPage();
         return this.baseMapper.list(page, condition);
     }
-
-    public Algo1 getAlgo1(){
-        return this.baseMapper.getAlgo1();
-    }
-
-    public Algo2 getAlgo2(){
-        return this.baseMapper.getAlgo2();
-    }
-
-    public Algo3 getAlgo3(){
-        return this.baseMapper.getAlgo3();
-    }
 }

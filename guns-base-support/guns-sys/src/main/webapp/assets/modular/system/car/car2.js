@@ -23,7 +23,14 @@ layui.use(['layer', 'form', 'table', 'admin', 'ax', 'func'], function () {
             {field: 'carId',  align: "center", sort: true, title: 'id'},
             {field: 'carNum', align: "center", sort: true, title: '车牌号'},
             // {field: 'carLoad', align: "center", sort: true, title: '车辆载重'},
-            {field: 'carStatus', align: "center", sort: true, title: '车辆状态'},
+            // {field: 'carStatus', align: "center", sort: true, title: '车辆状态'},
+            {field: 'carStatus', align: "center", sort: true,templet: function(d){
+                if (d.carStatus == '待命'){
+                    return d.carStatus;
+                } else{
+                    return  '<span style="color: #c00;">'+ d.carStatus +'</span>'
+                }
+                }, title: '车辆状态'},
             {field: 'carType', align: "center", sort: true, title: '车辆类型'},
             {field: 'carrier_code', align: "center", sort: true, title: '承运商编码'},
             {field: 'carrier_name', align: "center", sort: true, title: '承运商名称'},

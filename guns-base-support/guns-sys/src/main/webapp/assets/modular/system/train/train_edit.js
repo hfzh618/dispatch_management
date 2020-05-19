@@ -29,6 +29,39 @@ layui.use(['layer', 'form', 'admin', 'ax'], function () {
         data.field.trainStops = names.join(',');
         data.field.shops_id = codes.join(',');
 
+
+        //添加到接口中去
+        let param = new URLSearchParams();
+        param.append('marketCode',JSON.stringify(codes));
+        param.append('banlieId',data.field.trainId);
+        try {
+            axios({
+                method: 'post',
+                url: 'http://10.141.209.224:5001/updateBanlie',
+                data: param
+            })
+                .then(response => {
+                    let data = response.data;
+                    console.log('---------------');
+                    alert(data);
+                    console.log(data);
+                    console.log('---------------')
+                    let tmp, flag = 1;
+                    if (data.status == 'success') {
+                        console.log('success');
+                        alert('success');
+                    } else {
+                        console.log(data.status);
+                    }
+                })
+                .catch(function (error) { // 请求失败处理
+                    console.log(error);
+                });
+        } catch (e) {
+            console.log('出错：', e);
+        }
+
+
         ajax.set(data.field);
         ajax.start();
 

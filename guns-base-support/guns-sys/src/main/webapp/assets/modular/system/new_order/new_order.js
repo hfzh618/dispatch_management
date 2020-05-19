@@ -38,6 +38,22 @@ layui.use(['layer', 'form', 'table', 'admin', 'ax', 'func'], function () {
         tableId: "noticeTable"    //表格id
     };
 
+    var showTimeInterval;
+
+    Notice.refreshTable = function(){
+        showTimeInterval = setInterval(function(){
+            var queryData = {};
+            table.reload(Notice.tableId, {
+                where: queryData, page: {curr: 1}
+            });
+        },2000);
+    };
+
+    Notice.stopRefreshTable =  function(){
+        clearInterval(showTimeInterval);
+    };
+
+
     /**
      * 初始化表格的列
      */
@@ -47,12 +63,21 @@ layui.use(['layer', 'form', 'table', 'admin', 'ax', 'func'], function () {
             {field: 'uid',  align: "center", sort: true, title: '订单编号'},
             {field: 'weight', align: "center", sort: true, title: '订单重量'},
             {field: 'volume', align: "center", sort: true, title: '订单体积'},
-            {field: 'state', align: "center", sort: true, title: '订单状态'},
+            // {field: 'state', align: "center", sort: true, title: '订单状态'},
+            {field: 'state', align: "center", sort: true, templet: function(d){
+                    if (d.state == '已处理'){
+                        return  '<span style="color: #3abe3b;">'+ d.state +'</span>';
+                    } else{
+                        return  '<span style="color: #c00;">'+ d.state +'</span>';
+                    }
+                }, title: '订单状态'},
             {field: 'upsitename', align: "center", sort: true, title: '上货门店'},
             {field: 'downsitename', align: "center", sort: true, title: '下货门店'}
             // {align: 'center', toolbar: '#tableBar', title: '操作', minWidth: 200}
         ]];
     };
+
+
 
     /**
      * 点击查询按钮
@@ -138,6 +163,17 @@ layui.use(['layer', 'form', 'table', 'admin', 'ax', 'func'], function () {
     $('#btnAdd').click(function () {
         Notice.openAddNotice();
     });
+
+    // 搜索按钮点击事件
+    $('#btnRefresh').click(function () {
+        Notice.refreshTable();
+    });
+
+    // 搜索按钮点击事件
+    $('#btnRefreshStop').click(function () {
+        Notice.stopRefreshTable();
+    });
+
 
     // 工具条点击事件
     table.on('tool(' + Notice.tableId + ')', function (obj) {
