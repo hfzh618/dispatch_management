@@ -80,7 +80,6 @@ layui.use(['layer', 'form','table', 'ax', 'laydate','admin','func'], function ()
      * @param data 点击按钮时候的行数据
      */
     Car.onEditCar = function (data) {
-        alert("修改车辆");
         func.open({
             height: 420,
             title: '修改车辆',

@@ -122,7 +122,6 @@ layui.use(['layer', 'form', 'table', 'ztree', 'laydate', 'admin', 'ax', 'func', 
      * @param data 点击按钮时候的行数据
      */
     MgrUser.roleAssign = function (data) {
-        alert("roleAssing function");
         layer.open({
             type: 2,
             title: '角色分配',
@@ -229,9 +228,7 @@ layui.use(['layer', 'form', 'table', 'ztree', 'laydate', 'admin', 'ax', 'func', 
         var layEvent = obj.event;
         console.log("data");
         console.log(data);
-        alert(data);
         console.log("layEvent");
-        alert(layEvent);
         console.log(layEvent);
 
         if (layEvent === 'edit') {

@@ -43,13 +43,11 @@ layui.use(['layer', 'form', 'admin', 'ax'], function () {
                 .then(response => {
                     let data = response.data;
                     console.log('---------------');
-                    alert(data);
                     console.log(data);
                     console.log('---------------')
                     let tmp, flag = 1;
                     if (data.status == 'success') {
                         console.log('success');
-                        alert('success');
                     } else {
                         console.log(data.status);
                     }

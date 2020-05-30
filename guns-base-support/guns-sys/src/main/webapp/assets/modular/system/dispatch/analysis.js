@@ -9,7 +9,6 @@ layui.use(['layer', 'form', 'admin', 'ax'], function () {
     form.on('submit(btnSubmit)', function (data) {
         var order = document.getElementById('order').value;
         var car = document.getElementById('car').value;
-        alert("调用成功");
         // alert(car);
 
 

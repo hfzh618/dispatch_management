@@ -110,8 +110,6 @@ layui.use(['layer', 'form', 'table', 'admin', 'ax', 'func'], function () {
 
         var data = obj.data;
         var layEvent = obj.event;
-        alert(data);
-        alert(layEvent);
         if (layEvent === 'edit') {
             Notice.onEditNotice(data);
         } else if (layEvent === 'delete') {
