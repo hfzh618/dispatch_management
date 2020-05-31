@@ -57,7 +57,7 @@
         var shop_code_arr = shops_id.split(",");
         const xmlHttp = new XMLHttpRequest();
         var URL = "http://localhost:5303/market/";
-        // var URL = "http://10.141.209.224:5303/market/";
+        // var URL = "http://10.120.11.114:5303/market/";
         xmlHttp.open( "GET", URL, false );
         xmlHttp.send( null );
         const marketinfo = JSON.parse(xmlHttp.responseText);

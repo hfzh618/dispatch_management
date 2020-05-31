@@ -1831,7 +1831,7 @@ $('.close-pop').on('click', function () {
 })
 
 $('#setBtn').on('click', function () {
-    $('.container').attr('style', 'visibility: visible').find('.pop-up').eq(4).attr('style', 'visibility: visible').siblings().attr('style', 'visibility: hidden');
+    $('.container-screen').attr('style', 'visibility: visible').find('.pop-up').eq(4).attr('style', 'visibility: visible').siblings().attr('style', 'visibility: hidden');
 
 })
 

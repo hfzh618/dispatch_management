@@ -53,7 +53,7 @@ public class TrainService extends ServiceImpl<TrainMapper, Train> {
 //    public void generate() throws IOException {
 //        CloseableHttpClient httpClient = HttpClients.createDefault();
 //
-//        HttpGet request = new HttpGet("http://10.141.209.224:5001/routes");
+//        HttpGet request = new HttpGet("http://10.120.11.114:5001/routes");
 //        try (CloseableHttpResponse response = httpClient.execute(request)) {
 //
 //            HttpEntity entity = response.getEntity();

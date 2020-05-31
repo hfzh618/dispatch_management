@@ -37,7 +37,7 @@ layui.use(['layer', 'form', 'admin', 'ax'], function () {
         try {
             axios({
                 method: 'post',
-                url: 'http://10.141.209.224:5001/updateBanlie',
+                url: 'http://10.120.11.114:5001/updateBanlie',
                 data: param
             })
                 .then(response => {

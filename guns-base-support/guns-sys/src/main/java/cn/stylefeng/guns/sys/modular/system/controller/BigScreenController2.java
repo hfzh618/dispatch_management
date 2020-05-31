@@ -21,4 +21,9 @@ public class BigScreenController2 extends BaseController {
         return PREFIX + "console2.html";
     }
 
+    @RequestMapping("3")
+    public String index3(){
+        return PREFIX + "modified.html";
+    }
+
 }
