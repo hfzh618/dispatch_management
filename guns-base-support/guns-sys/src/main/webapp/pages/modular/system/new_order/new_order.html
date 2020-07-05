@@ -58,9 +58,11 @@
 
 
 <script>
+    import server from '../../../../assets/common/js/server.js';
     $(document).ready(function(){
         const xmlHttp = new XMLHttpRequest();
-        var URL = "http://10.120.11.114:5006/gettraininfo";
+        // const server = 'http://10.120.11.184';
+        var URL = server + ":5006/gettraininfo";
         xmlHttp.open( "GET", URL, false );
         xmlHttp.send( null );
         const traininfo = JSON.parse(xmlHttp.responseText);
