@@ -58,10 +58,10 @@
 
 
 <script>
-    import server from '../../../../assets/common/js/server.js';
+    // import server from '../../../../assets/common/js/server.js';
     $(document).ready(function(){
         const xmlHttp = new XMLHttpRequest();
-        //const server = 'http://10.120.11.184';
+        const server = 'http://10.120.11.184';
         var URL = server + ":5006/gettraininfo";
         xmlHttp.open( "GET", URL, false );
         xmlHttp.send( null );
