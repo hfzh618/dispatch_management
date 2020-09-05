@@ -25,7 +25,7 @@ layui.use(['layer', 'form', 'table', 'admin', 'ax', 'func'], function () {
         xmlHttp.addEventListener("load", function(e) {
             setTimeout(function(){ clearInterval(showTimeInterval); }, 5000);
         });
-        var URL = "http://10.120.11.114:5006/algo3/simrun/"+train_val+"/"+car_val;
+        var URL = "http://10.120.11.235:5006/algo3/simrun/"+train_val+"/"+car_val;
         xmlHttp.open( "GET", URL);
         xmlHttp.send( null );
         return false;

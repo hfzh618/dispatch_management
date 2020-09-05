@@ -87,7 +87,7 @@ layui.use(['layer', 'form', 'table', 'admin', 'ax', 'func'], function () {
             try {
                 axios({
                     method: 'post',
-                    url: 'http://10.120.11.114:5001/deleteBanlie',
+                    url: 'http://10.120.11.235:5001/deleteBanlie',
                     data: param
                 })
                     .then(response => {
